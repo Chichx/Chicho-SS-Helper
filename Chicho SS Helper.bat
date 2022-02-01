@@ -49,7 +49,7 @@ echo %u%Created by: %g%Chicho#7585
 echo %u%Github: %g%https://github.com/Gastxn
 echo %u%Version: %g%1.5
 echo.
-curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"content\":\":warning: **Chicho SS Helper LOGIN!** :warning:\n\n:man_pouting: **Username**: %username% \n:computer: **HWID**: %hwid%\n:window: **OS**: %os%\n:detective: **IP**: %ipv4% \"}" %chicho_webhook%
+curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"embeds\": [{\"title\": \"Successfully authenticated.\", \"color\": 5220458, \"fields\": [{\"name\": \":man_pouting: **Username**\", \"value\": \"%username%\"}, {\"name\": \":computer: **Computer Name** \", \"value\": \"%COMPUTERNAME% \"}, {\"name\": \":computer: **HWID** \", \"value\": \"%hwid% \"}, {\"name\": \":window: **OS** \", \"value\": \"%os% \"}, {\"name\": \":detective: **IP** \", \"value\": \"**%ipv4%** \"}],\"thumbnail\":{\"url\": \"https://i.imgur.com/8WBaKK8.png\"},\"footer\":{\"text\": \"Opened on %date% - %time%\"}}]}" %chicho_webhook%
 timeout /t 4 >nul & cls & goto menu
 
 :fail
@@ -59,7 +59,7 @@ echo %hwid% | CLIP
 echo %u%[%r%-%u%] %r%Not Authenticated...
 echo %r%HWID copied to clipboard.
 echo Add to chicho#7585 to access the Chicho SS Helper
-curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"content\":\":warning: **Chicho SS Helper LOGIN FAILED!** :warning:\n\n:man_pouting: **Username**: %username% \n:computer: **HWID**: %hwid%\n:window: **OS**: %os%\n:detective: **IP**: %ipv4% \"}" %chicho_webhook%
+curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"embeds\": [{\"title\": \"Not Authenticated...\", \"color\": 12713984, \"fields\": [{\"name\": \":man_pouting: **Username**\", \"value\": \"%username%\"}, {\"name\": \":computer: **Computer Name** \", \"value\": \"%COMPUTERNAME% \"}, {\"name\": \":computer: **HWID** \", \"value\": \"%hwid% \"}, {\"name\": \":window: **OS** \", \"value\": \"%os% \"}, {\"name\": \":detective: **IP** \", \"value\": \"**%ipv4%** \"}],\"thumbnail\":{\"url\": \"https://i.imgur.com/jqWZcxa.png\"},\"footer\":{\"text\": \"Opened on %date% - %time%\"}}]}" %chicho_webhook%
 rmdir /s /q %appdata%\ChichoSSHelper
 echo.
 timeout /t 4 >nul & exit /b
