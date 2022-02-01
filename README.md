@@ -12,6 +12,7 @@ _Help staff on their Screenshares_
 * EventViewer Paths
 * HWID Extractor
 * Custom Presets
+* Scanning Minecraft
 * Delete everything downloaded with Chicho SS Helper
 
 ### Gui 🌌

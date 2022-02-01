@@ -53,7 +53,6 @@ echo %u%Version: %g%1.5
 echo.
 timeout /t 3 >nul & cls & goto menu
 
-
 :invalidPin
 color 0C
 echo.
@@ -189,13 +188,6 @@ goto menu
 
 :credits
 cls
-echo.
-echo                      .o88b. db   db d888888b  .o88b. db   db  .d88b.  
-echo                     d8P  Y8 88   88   `88'   d8P  Y8 88   88 .8P  Y8.
-echo                     8P      88ooo88    88    8P      88ooo88 88    88%c%
-echo                     8b      88~~~88    88    8b      88~~~88 88    88
-echo                     Y8b  d8 88   88   .88.   Y8b  d8 88   88 `8b  d8'
-echo                      `Y88P' YP   YP Y888888P  `Y88P' YP   YP  `Y88P'        
 echo.            
 echo %u%                            Created by: %c%Chicho#7585
 echo %u%                            Github: %c%https://github.com/Gastxn
@@ -412,7 +404,13 @@ echo %u%[%c%UN%u%] Uninstall
 echo %u%[%c%PS%u%] Property Store
 echo %u%[%c%DI%u%] Direct Input
 echo %u%[%c%SFD%u%] Set File Date
-
+echo %u%[%c%CSM%u%] CIDsizeMRU
+echo %u%[%c%TPS%u%] TypedPaths
+echo %u%[%c%SMI%u%] StartMenuInternet
+echo %u%[%c%CP%u%] Command Processor
+echo %u%[%c%VIC%u%] VolumeInfoCache
+echo %u%[%c%HKID%u%] HKIDs (AMD ONLY)
+echo %u%[%c%USBS%u%] USB Storage
 
 
 echo %u%[%c%Menu%u%] Go Menu
@@ -439,6 +437,13 @@ if %M%==UN goto Uninstall
 if %M%==PS goto PropertyStore
 if %M%==DI goto DirectInput
 if %M%==SFD goto SetFileDate
+if %M%==CSM goto CIDsizeMRU
+if %M%==TPS goto TypedPaths
+if %M%==SMI goto StartMenuInternet
+if %M%==CP goto CommandProcessor
+if %M%==VIC goto VolumeInfoCache
+if %M%==HKID goto HKIDS
+if %M%==USBS goto USBStorage
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -950,6 +955,55 @@ goto F
 :SetFileDate
 cls
 reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\NoNonsense\SetFileDate" /f
+start regedit
+echo Done
+goto F
+
+:CIDsizeMRU
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\CIDSizeMRU" /f
+start regedit
+echo Done
+goto F
+
+:TypedPaths
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths" /f
+start regedit
+echo Done
+goto F
+
+:StartMenuInternet
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet" /f
+start regedit
+echo Done
+goto F
+
+:CommandProcessor
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor" /f
+start regedit
+echo Done
+goto F
+
+:VolumeInfoCache
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Search\VolumeInfoCache" /f
+start regedit
+echo Done
+goto F
+
+:HKIDS
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\AMD\HKIDs" /f
+start regedit
+echo Done
+goto F
+
+:USBStorage
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR" /f
 start regedit
 echo Done
 goto F
