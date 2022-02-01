@@ -51,7 +51,7 @@ echo %u%Created by: %g%Chicho#7585
 echo %u%Github: %g%https://github.com/Gastxn
 echo %u%Version: %g%1.5
 echo.
-timeout /t 5 >nul & cls & goto menu
+timeout /t 3 >nul & cls & goto menu
 
 
 :invalidPin
@@ -133,8 +133,10 @@ echo %c%                             ║                %u% [%c%13%u%] HWID Extr
 echo %c%                             ║                %u% [%c%Quit%u%] Destruct%c%                  ║
 echo %c%                             ╚══════════════════════════════════════════════════╝
 echo %u%                                                     Theme %c%%preset%
-echo %u%                                                 Licensed to %c%%username%
-echo %u%                                                 Creator %c%Chicho#7585
+echo %u%                                               Licensed to %c%%username%
+tasklist /fi "ImageName eq Javaw.exe" /fo csv 2>nul | find /I "Javaw" >nul
+if "%ERRORLEVEL%"=="0" echo                                                 %g%Minecraft found.%white%
+if "%ERRORLEVEL%"=="1" echo                                                 %r%Minecraft not found.%white%
 echo.
 SET chicho_webhook=
 set /p M="%c%Please, choose:%u% "
