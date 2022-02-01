@@ -16,7 +16,7 @@ _Help staff on their Screenshares_
 
 ### Gui 🌌
 <p align="center">
-  <image src="https://i.chicho.wtf/4cYAB.png">
+  <image src="https://cdn.discordapp.com/attachments/936897493793402940/937987773158277181/ChichoSSHelper.png">
 </p>
 
 ## Notes ⚡
