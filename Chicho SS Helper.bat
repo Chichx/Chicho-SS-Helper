@@ -373,6 +373,7 @@ echo %u%[%c%IC%u%] IpConfig
 echo %u%[%c%TRE%u%] Tree
 echo %u%[%c%SC%u%] Shadows Copies
 echo %u%[%c%MMA%u%] MMAgent
+echo %u%[%c%TNC%u%] Test Network Connection
 echo %u%[%c%DPS%u%] View DPS Process
 echo %u%[%c%PCA%u%] View PcaSvc Process
 echo %u%[%c%EVL%u%] View Eventlog Process
@@ -390,6 +391,7 @@ if %M%==TRE goto Tree
 if %M%==SC goto ShadowsCopies
 if %M%==TL goto TaskList
 if %M%==MMA goto MMAgent
+if %M%==TNC goto TestNetworkConnection
 if %M%==DPS goto QueryDPS
 if %M%==PCA goto QueryPcaSvc
 if %M%==EVL goto QueryEventlog
@@ -913,6 +915,13 @@ goto E
 :MMAgent
 cls
 powershell "MMAgent"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto F
+
+:TestNetworkConnection
+cls
+powershell "Test-NetConnection"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto F
