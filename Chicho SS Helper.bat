@@ -1,5 +1,5 @@
 @echo off
-title Chicho SS Helper
+title Chicho SS Helper - chicho#7585 - 2.0
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 
 md %appdata%\ChichoSSHelper
@@ -127,8 +127,7 @@ echo %c%                       ╚═══════════════�
 echo %c%                             ║                %u% [%c%13%u%] Theme presets%c%               ║
 echo %c%                             ║                %u% [%c%Quit%u%] Destruct%c%                  ║
 echo %c%                             ╚══════════════════════════════════════════════════╝
-echo %u%                                                     Theme %c%%preset%
-echo %u%                                               Licensed to %c%%username%
+echo %u%                                                Licensed to %c%%username%
 tasklist /fi "ImageName eq Javaw.exe" /fo csv 2>nul | find /I "Javaw" >nul
 if "%ERRORLEVEL%"=="0" echo                                                 %g%Minecraft found.%white%
 if "%ERRORLEVEL%"=="1" echo                                                 %r%Minecraft not found.%white%
@@ -172,7 +171,6 @@ Powershell "wmic memorychip get serialnumber" >> %appdata%\ChichoSSHelper\"HWID.
 Powershell "wmic baseboard get serialnumber" >> %appdata%\ChichoSSHelper\"HWID.txt"
 Powershell "wmic cpu get name">>%appdata%\ChichoSSHelper\HWID.txt
 cd "%appdata%\ChichoSSHelper\"
-curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "file=@HWID.txt" -F "payload_json={\"content\":\":warning: **Chicho SS Helper SECURITY!** :warning:\n\n:man_pouting: **Username**: %username% \n:window: **OS**: %os%\n:computer: **Computer Info**: \"}" %chicho_webhook%
 cls
 echo Done.
 pause
@@ -1539,10 +1537,10 @@ title Thanks for using Chicho SS Helper!
 mode 42,5
 cls
 echo.            
-echo %u%Created by: %c%Chicho#7585
+echo %u%Developed by: %c%Chicho#7585
 echo %u%Github: %c%https://github.com/Gastxn
-echo %u%Version: %c%1.5
-timeout /t 7 >nul
+timeout /t 5 >nul
+start https://chicho.wtf
 cls
 rmdir /s /q %appdata%\ChichoSSHelper
 exit
