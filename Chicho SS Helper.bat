@@ -43,11 +43,8 @@ if "%auth%"=="%hwid%" (goto :success) else (goto :fail)
 color a
 echo.
 echo %u%[%g%+%u%] %g%Successfully authenticated.
-echo %u%Your HWID: %g%%hwid%
 echo.
-echo %u%Created by: %g%Chicho#7585
-echo %u%Github: %g%https://github.com/Gastxn
-echo %u%Version: %g%1.5
+echo %u%Developed by: %g%Chicho#7585
 echo.
 curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"embeds\": [{\"title\": \"Successfully authenticated.\", \"color\": 5220458, \"fields\": [{\"name\": \":man_pouting: **Username**\", \"value\": \"%username%\"}, {\"name\": \":computer: **Computer Name** \", \"value\": \"%COMPUTERNAME% \"}, {\"name\": \":computer: **HWID** \", \"value\": \"%hwid% \"}, {\"name\": \":window: **OS** \", \"value\": \"%os% \"}, {\"name\": \":detective: **IP** \", \"value\": \"**%ipv4%** \"}],\"thumbnail\":{\"url\": \"https://i.imgur.com/8WBaKK8.png\"},\"footer\":{\"text\": \"Opened on %date% - %time%\"}}]}" %chicho_webhook%
 timeout /t 4 >nul & cls & goto menu
@@ -121,9 +118,9 @@ echo         ╚═════╝╚═╝  ╚═╝╚═╝ ╚════�
 echo.
 echo %c%                       ╔═════════════════════════════════╦════════════════════════════╗ %u%
 echo                        %c%║%u% [%c%1%u%] Macros                      %c%║%u% [%c%7%u%] Explorer               %c%║%u%
-echo                        %c%║%u% [%c%2%u%] Sites                       %c%║%u% [%c%8%u%] Journal paths          %c%║%u%
+echo                        %c%║%u% [%c%2%u%] Sites                       %c%║%u% [%c%8%u%] USN Journal            %c%║%u%
 echo                        %c%║%u% [%c%3%u%] Record                      %c%║%u% [%c%9%u%] Commands               %c%║%u%
-echo                        %c%║%u% [%c%4%u%] Manual Tools                %c%║%u% [%c%10%u%] Registry Paths        %c%║%u%
+echo                        %c%║%u% [%c%4%u%] Manual Tools                %c%║%u% [%c%10%u%] Regedit Paths         %c%║%u%
 echo                        %c%║%u% [%c%5%u%] Recovery Files Tools        %c%║%u% [%c%11%u%] EventViewer           %c%║%u%
 echo                        %c%║%u% [%c%6%u%] Automatic Tools             %c%║%u% [%c%12%u%] HWID Extractor        %c%║%u%
 echo %c%                       ╚═════════════════════════════════╩════════════════════════════╝
@@ -256,8 +253,6 @@ echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
 goto A
 
-
-
 :B
 cls
 echo %c%Recovery Files Tools
@@ -320,6 +315,8 @@ echo %u%[%c%SAM%u%] Shell Application Manager
 echo %u%[%c%HIS%u%] History
 echo %u%[%c%UL%u%] Usage Logs
 echo %u%[%c%CF%u%] Control Folders
+echo %u%[%c%FW%u%] Firewall
+echo %u%[%c%CD%u%] CrashDumps
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Please, choose:%u% "
@@ -334,6 +331,8 @@ if %M%==SAM goto ShellApplicationManager
 if %M%==HIS goto History
 if %M%==UL goto UsageLogs
 if %M%==CF goto ControlFolders
+if %M%==FW goto Firewall2
+if %M%==CD goto CrashDumps
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -341,7 +340,7 @@ goto D
 
 :E
 cls
-echo %c%Journal Paths
+echo %c%USN Journal
 echo %u%[%c%JSC%u%] Security changes
 echo %u%[%c%JER%u%] Explorer restart
 echo %u%[%c%JDF%u%] Deleted files
@@ -366,7 +365,7 @@ goto D
 
 :F
 cls
-echo %c%CMD and Powershell Commmands
+echo %c%Commands
 echo %u%[%c%TL%u%] TaskList
 echo %u%[%c%CH%u%] ConsoleHost History (Powershell Commands)
 echo %u%[%c%IC%u%] IpConfig
@@ -405,7 +404,7 @@ goto E
 
 :G
 cls
-echo %c%Registry Paths
+echo %c%Regedit Paths
 echo %u%[%c%EF%u%] Executable files ran
 echo %u%[%c%DR%u%] Disallow Run
 echo %u%[%c%MCC%u%] MuiChache
@@ -500,7 +499,7 @@ echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
 goto G
 
-:: Cositasss
+:: Cositas
 
 if %M%==Macro goto Macro
 if %M%==Sites goto BlockedSites
@@ -812,7 +811,7 @@ goto D
 
 :Recycle
 cls
-start "" "C:\$Recycle.bin"
+explorer "C:\$Recycle.bin"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
@@ -847,14 +846,14 @@ goto D
 
 :History
 cls
-start "" "C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\History"
+explorer "C:\Users\%username%\AppData\Local\Microsoft\Windows\History"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
 
 :UsageLogs
 cls
-start "" "C:\Users\%username%\AppData\Local\Microsoft\CLR_v4.0\UsageLogs\"
+explorer "C:\Users\%username%\AppData\Local\Microsoft\CLR_v4.0\UsageLogs\"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
@@ -862,6 +861,20 @@ goto D
 :ControlFolders
 cls
 start Control folders
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:Firewall2
+cls
+start firewall.cpl
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:CrashDumps
+cls
+explorer "C:\Users\%username%\AppData\Local\CrashDumps"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
