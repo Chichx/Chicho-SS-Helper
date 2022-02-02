@@ -1512,8 +1512,15 @@ if /i %vpn%==Yes (goto menu) else (exit)
 
 :pia
 tasklist /fi "ImageName eq pia-client.exe" /fo csv 2>nul | find /I "pia-client" >nul
-if %errorlevel%==1 goto ipvanish
+if %errorlevel%==1 goto proton
 if %errorlevel%==0 echo %c%PIA VPN is running, continue to SS? (Yes, No)
+set /p vpn=
+if /i %vpn%==Yes (goto menu) else (exit)
+
+:proton
+tasklist /fi "ImageName eq ProtonVPNService.exe" /fo csv 2>nul | find /I "ProtonVPN" >nul
+if %errorlevel%==1 goto ipvanish
+if %errorlevel%==0 echo %c%ProtonVPN VPN is running, continue to SS? (Yes, No)
 set /p vpn=
 if /i %vpn%==Yes (goto menu) else (exit)
 
