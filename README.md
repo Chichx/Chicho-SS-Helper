@@ -10,6 +10,7 @@ _Help staff on their Screenshares_
 * CMD Commands
 * Powershell Commands
 * EventViewer Paths
+* Explorer Paths
 * HWID Extractor
 * Custom Presets
 * Scanning Minecraft
@@ -17,7 +18,7 @@ _Help staff on their Screenshares_
 
 ### Gui 🌌
 <p align="center">
-  <image src="https://cdn.discordapp.com/attachments/936897493793402940/937987773158277181/ChichoSSHelper.png">
+  <image src="https://i.imgur.com/QzV2q9R.png">
 </p>
 
 ## Notes ⚡
