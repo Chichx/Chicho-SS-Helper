@@ -10,15 +10,19 @@ _Help staff on their Screenshares_
 * CMD Commands
 * Powershell Commands
 * EventViewer Paths
+* Explorer Paths
 * HWID Extractor
 * Custom Presets
 * Scanning Minecraft
+* HWID System Login
 * Delete everything downloaded with Chicho SS Helper
 
 ### Gui 🌌
-<p align="center">
-  <image src="https://cdn.discordapp.com/attachments/936897493793402940/937987773158277181/ChichoSSHelper.png">
-</p>
+
+| GUI | HWID No Authenticated | HWID Authenticated | Manual | Automatic | Recovery | Explorer | USN | Commands | Regedit | EventViewer
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| ![gui](https://i.imgur.com/QzV2q9R.png) | ![hwid no authenticated](https://i.imgur.com/yptbxAm.png) | ![hwid authenticated](https://i.imgur.com/9573s8D.png) | ![manual](https://i.imgur.com/nDixieg.png) |  ![automatic](https://i.imgur.com/RZ2bfik.png) | ![recovery](https://i.imgur.com/DfiZ7vN.png) | ![explorer](https://i.imgur.com/23zase0.png) | ![usn](https://i.imgur.com/UwdJWEr.png) | ![commands](https://i.imgur.com/MN0yPzW.png) | ![regedit](https://i.imgur.com/aujW7xh.png) | ![eventvwr](https://i.imgur.com/kNC4d64.png) |
+
 
 ## Notes ⚡
 * This is the first version, if you see a bug, please open an issue. ✔
