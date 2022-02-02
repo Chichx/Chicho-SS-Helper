@@ -311,12 +311,13 @@ echo %u%[%c%RB%u%] RecycleBin
 echo %u%[%c%BP%u%] Background Programs
 echo %u%[%c%RN%u%] Recent
 echo %u%[%c%GPE%u%] Gpedit
-echo %u%[%c%SAM%u%] Shell Application Manager
+echo %u%[%c%SAM%u%] Application Manager
 echo %u%[%c%HIS%u%] History
 echo %u%[%c%UL%u%] Usage Logs
 echo %u%[%c%CF%u%] Control Folders
 echo %u%[%c%FW%u%] Firewall
 echo %u%[%c%CD%u%] CrashDumps
+echo %u%[%c%NP%u%] Netplwiz
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Please, choose:%u% "
@@ -333,6 +334,7 @@ if %M%==UL goto UsageLogs
 if %M%==CF goto ControlFolders
 if %M%==FW goto Firewall2
 if %M%==CD goto CrashDumps
+if %M%==NP goto Netplwiz
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -875,6 +877,13 @@ goto D
 :CrashDumps
 cls
 explorer "C:\Users\%username%\AppData\Local\CrashDumps"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:Netplwiz
+cls
+start Netplwiz
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
