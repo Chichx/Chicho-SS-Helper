@@ -120,14 +120,14 @@ echo        ╚██████╗██║  ██║██║╚████
 echo         ╚═════╝╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝     ╚══════╝╚══════╝    ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     
 echo.
 echo %c%                       ╔═════════════════════════════════╦════════════════════════════╗ %u%
-echo                        %c%║%u% [%c%1%u%] Macros                      %c%║%u% [%c%7%u%] Journal paths          %c%║%u%
-echo                        %c%║%u% [%c%2%u%] Sites                       %c%║%u% [%c%8%u%] CMD and Powershell     %c%║%u%
-echo                        %c%║%u% [%c%3%u%] Record                      %c%║%u% [%c%9%u%] Registry Paths         %c%║%u%
-echo                        %c%║%u% [%c%4%u%] Manual Tools                %c%║%u% [%c%10%u%] EventViewer           %c%║%u%
-echo                        %c%║%u% [%c%5%u%] Recovery Files Tools        %c%║%u% [%c%11%u%] Theme presets         %c%║%u%
-echo                        %c%║%u% [%c%6%u%] Automatic Tools             %c%║%u% [%c%12%u%] Credits               %c%║%u%
+echo                        %c%║%u% [%c%1%u%] Macros                      %c%║%u% [%c%7%u%] Explorer               %c%║%u%
+echo                        %c%║%u% [%c%2%u%] Sites                       %c%║%u% [%c%8%u%] Journal paths          %c%║%u%
+echo                        %c%║%u% [%c%3%u%] Record                      %c%║%u% [%c%9%u%] Commands               %c%║%u%
+echo                        %c%║%u% [%c%4%u%] Manual Tools                %c%║%u% [%c%10%u%] Registry Paths        %c%║%u%
+echo                        %c%║%u% [%c%5%u%] Recovery Files Tools        %c%║%u% [%c%11%u%] EventViewer           %c%║%u%
+echo                        %c%║%u% [%c%6%u%] Automatic Tools             %c%║%u% [%c%12%u%] HWID Extractor        %c%║%u%
 echo %c%                       ╚═════════════════════════════════╩════════════════════════════╝
-echo %c%                             ║                %u% [%c%13%u%] HWID Extractor%c%              ║
+echo %c%                             ║                %u% [%c%13%u%] Theme presets%c%               ║
 echo %c%                             ║                %u% [%c%Quit%u%] Destruct%c%                  ║
 echo %c%                             ╚══════════════════════════════════════════════════╝
 echo %u%                                                     Theme %c%%preset%
@@ -147,9 +147,9 @@ if %M%==7 goto D
 if %M%==8 goto E
 if %M%==9 goto F
 if %M%==10 goto G
-if %M%==11 goto presets
-if %M%==12 goto credits
-if %M%==13 goto hwid
+if %M%==11 goto H
+if %M%==12 goto hwid
+if %M%==13 goto presets
 if %M%==Quit goto Destruct
 
 echo %c%Please enter a valid option.
@@ -181,15 +181,6 @@ echo Done.
 pause
 start %appdata%\ChichoSSHelper\"HWID.txt"
 cls
-goto menu
-
-:credits
-cls
-echo.            
-echo %u%                            Created by: %c%Chicho#7585
-echo %u%                            Github: %c%https://github.com/Gastxn
-echo %u%                            Version: %c%1.5
-timeout /t 15 >nul
 goto menu
 
 :: Programas Manuales
@@ -315,6 +306,29 @@ goto C
 
 :D
 cls
+echo %c%Explorer
+echo %u%[%c%PRE%u%] Prefetch
+echo %u%[%c%TEMP%u%] Temp
+echo %u%[%c%MC%u%] .Minecraft
+echo %u%[%c%RB%u%] RecycleBin
+echo %u%[%c%BP%u%] Background Programs
+echo %u%[%c%RN%u%] Recent
+echo %u%[%c%Menu%u%] Go Menu
+echo.
+set /p M="%c%Please, choose:%u% "
+if %M%==PRE goto Prefetch
+if %M%==TEMP goto Temp
+if %M%==MC goto Puntominecraft
+if %M%==RB goto RecycleBin
+if %M%==BP goto BackgroundP
+if %M%==RN goto Recent
+if %M%==Menu goto menu
+echo %c%Please enter a valid option.
+timeout /t 1 /nobreak >nul
+goto D
+
+:E
+cls
 echo %c%Journal Paths
 echo %u%[%c%JSC%u%] Security changes
 echo %u%[%c%JER%u%] Explorer restart
@@ -338,13 +352,11 @@ echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
 goto D
 
-:E
+:F
 cls
 echo %c%CMD and Powershell Commmands
 echo %u%[%c%TL%u%] TaskList
 echo %u%[%c%CH%u%] ConsoleHost History (Powershell Commands)
-echo %u%[%c%RB%u%] RecycleBin
-echo %u%[%c%BP%u%] Background programs
 echo %u%[%c%IC%u%] IpConfig
 echo %u%[%c%TRE%u%] Tree
 echo %u%[%c%SC%u%] Shadows Copies
@@ -361,8 +373,6 @@ echo.
 set /p M="%c%Please, choose:%u% "
 if %M%==NS goto NtfsLogsState
 if %M%==CH goto ConsoleHost
-if %M%==BP goto BackgroundP
-if %M%==RB goto Recycle
 if %M%==IC goto IpConfig
 if %M%==TRE goto Tree
 if %M%==SC goto ShadowsCopies
@@ -379,7 +389,7 @@ echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
 goto E
 
-:F
+:G
 cls
 echo %c%Registry Paths
 echo %u%[%c%EF%u%] Executable files ran
@@ -448,7 +458,7 @@ echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
 goto F
 
-:G
+:H
 cls
 echo %c%EventViewer Logs
 echo %u%[%c%TC%u%] Check for Time change
@@ -482,54 +492,6 @@ if %M%==Macro goto Macro
 if %M%==Sites goto BlockedSites
 if %M%==Record goto RecordingSoftwares
 if %M%==Quit goto Destruct
-
-:: Programas Para recuperar cosas
-
-:Clever
-cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://win.cleverfiles.com/disk-drill-win.exe','%appdata%\ChichoSSHelper\CleverRecoverFiles.exe')
-"%appdata%\ChichoSSHelper\CleverRecoverFiles.exe"
-goto B
-
-:Previous
-cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://www.nirsoft.net/utils/previousfilesrecovery-x64.zip','%appdata%\ChichoSSHelper\PreviousFilesRecovery.zip')
-"%appdata%\ChichoSSHelper\PreviousFilesRecovery.zip"
-goto B
-
-:EaseUS
-cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://down.easeus.com/product/drw_trial?ref=%2Fdatarecoverywizardpro%2F','%appdata%\ChichoSSHelper\EaseUS.exe')
-"%appdata%\ChichoSSHelper\EaseUS.exe"
-goto B
-
-:Recuva
-cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://download.ccleaner.com/rcsetup153.exe','%appdata%\ChichoSSHelper\Recuva.exe')
-"%appdata%\ChichoSSHelper\Recuva.exe"
-goto B
-
-:Glarysoft
-cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://www.glarysoft.com/aff/download.php?s=FRR','%appdata%\ChichoSSHelper\Glarysoft.exe')
-"%appdata%\ChichoSSHelper\Glarysoft.exe"
-goto B
-
-:KickAss
-cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://sourceforge.net/projects/kickassundelete/files/Kickass%20Undelete%201.5.5/KickassUndelete_1.5.5.exe/download','%appdata%\ChichoSSHelper\KickAss.exe')
-"%appdata%\ChichoSSHelper\KickAss.exe"
-:Hetman
-cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://hetmanrecovery.com/download/hetman_uneraser.exe','%appdata%\ChichoSSHelper\hetman_uneraser.exe')
-"%appdata%\ChichoSSHelper\hetman_uneraser.exe"
-goto B
-
-:Remo
-cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://remocdn1.azureedge.net/remosoftware/remo-recover-windows.exe','%appdata%\ChichoSSHelper\remo-recover-windows.exe')
-"%appdata%\ChichoSSHelper\remo-recover-windows.exe"
-goto B
 
 :: Programas Manuales
 
@@ -731,6 +693,54 @@ powershell (new-object System.Net.WebClient).DownloadFile('https://github.com/po
 "%appdata%\ChichoSSHelper\JournalTrace.exe"
 goto A
 
+:: Programas Para recuperar cosas
+
+:Clever
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://win.cleverfiles.com/disk-drill-win.exe','%appdata%\ChichoSSHelper\CleverRecoverFiles.exe')
+"%appdata%\ChichoSSHelper\CleverRecoverFiles.exe"
+goto B
+
+:Previous
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://www.nirsoft.net/utils/previousfilesrecovery-x64.zip','%appdata%\ChichoSSHelper\PreviousFilesRecovery.zip')
+"%appdata%\ChichoSSHelper\PreviousFilesRecovery.zip"
+goto B
+
+:EaseUS
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://down.easeus.com/product/drw_trial?ref=%2Fdatarecoverywizardpro%2F','%appdata%\ChichoSSHelper\EaseUS.exe')
+"%appdata%\ChichoSSHelper\EaseUS.exe"
+goto B
+
+:Recuva
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://download.ccleaner.com/rcsetup153.exe','%appdata%\ChichoSSHelper\Recuva.exe')
+"%appdata%\ChichoSSHelper\Recuva.exe"
+goto B
+
+:Glarysoft
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://www.glarysoft.com/aff/download.php?s=FRR','%appdata%\ChichoSSHelper\Glarysoft.exe')
+"%appdata%\ChichoSSHelper\Glarysoft.exe"
+goto B
+
+:KickAss
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://sourceforge.net/projects/kickassundelete/files/Kickass%20Undelete%201.5.5/KickassUndelete_1.5.5.exe/download','%appdata%\ChichoSSHelper\KickAss.exe')
+"%appdata%\ChichoSSHelper\KickAss.exe"
+:Hetman
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://hetmanrecovery.com/download/hetman_uneraser.exe','%appdata%\ChichoSSHelper\hetman_uneraser.exe')
+"%appdata%\ChichoSSHelper\hetman_uneraser.exe"
+goto B
+
+:Remo
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://remocdn1.azureedge.net/remosoftware/remo-recover-windows.exe','%appdata%\ChichoSSHelper\remo-recover-windows.exe')
+"%appdata%\ChichoSSHelper\remo-recover-windows.exe"
+goto B
+
 :: Programas Automaticos
 
 :Echo
@@ -763,6 +773,49 @@ powershell (new-object System.Net.WebClient).DownloadFile('https://dl.avenge.ac/
 "%appdata%\ChichoSSHelper\Avenge.exe"
 goto C
 
+:: Explorer
+
+:Temp
+cls
+explorer "%temp%"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:Prefetch
+cls
+explorer "C:\Windows\prefetch"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:Puntominecraft
+cls
+explorer "%appdata%\.minecraft"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:Recycle
+cls
+start "" "C:\$Recycle.bin"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:BackgroundP
+cls
+explorer.exe shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:Recent
+cls
+start Shell:Recent
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
 
 :: USN journal
 
@@ -770,244 +823,43 @@ goto C
 cls
 fsutil usn readjournal c: csv | findstr /i /C:"0x80000200" | findstr /i /C:.exe\^" /i /C:.py\^" /i /C:.jar\^" /i /C:.dll\^" /i /C:.com\^" /i /C:.pif\^" /i /C:.txt\^" /i /C:.jpg\^" /i /C:.jpeg\^" /i /C:.png\^" /i /C:.lnk\^" /i /C:.mp3\^" /i /C:.mp4\^" /i /C:.mkv\^" /i /C:.avi\^" /i /C:.ico\^" /i /C:.bat\^" /i /C:.cmd\^" /i /C:.reg\^" /i /C:.zip\^" /i /C:.rar\^" /i /C:.7z\^" /i /C:.ini\^" /i /C:.html\^" /i /C:.ppt\^" /i /C:.docx\^" /i /C:.xlsx\^" /i /C:.chm\^" /i /C:.aspx\^" /i /C:.app\^" /i /C:? > %appdata%\ChichoSSHelper\deletedfiles.txt
 "%appdata%\ChichoSSHelper\deletedfiles.txt"
-goto D
+goto E
 
 :journalRenamedFiles
 cls
 fsutil usn readjournal c: csv | findstr /i /C:"0x00002000" /i /C:"0x00001000" | findstr /i /C:.exe\^" /i /C:.py\^" /i /C:.jar\^" /i /C:.dll\^" /i /C:.com\^" /i /C:.pif\^" /i /C:.txt\^" /i /C:.jpg\^" /i /C:.jpeg\^" /i /C:.png\^" /i /C:.lnk\^" /i /C:.mp3\^" /i /C:.mp4\^" /i /C:.mkv\^" /i /C:.avi\^" /i /C:.ico\^" /i /C:.bat\^" /i /C:.cmd\^" /i /C:.reg\^" /i /C:.zip\^" /i /C:.rar\^" /i /C:.7z\^" /i /C:.ini\^" /i /C:.html\^" /i /C:.ppt\^" /i /C:.docx\^" /i /C:.xlsx\^" /i /C:.chm\^" /i /C:.aspx\^" /i /C:.app\^" /i /C:? > %appdata%\ChichoSSHelper\renamedfiles.txt
 "%appdata%\ChichoSSHelper\renamedfiles.txt"
-goto D
+goto E
 
 :journalFileType
 cls
 fsutil usn readJournal c: csv | findstr /i /C:"0x00002020" /i /C:"0x00000020" /i /C:"0x00200000" | findstr /i /C:"0x80008000" /i /C:"0x00008006" /i /C:"0x80200120" | findstr /i /C:.exe\^" /i /C:.py\^" /i /C:.jar\^" /i /C:.dll\^" /i /C:.com\^" /i /C:.pif\^" /i /C:.txt\^" /i /C:.jpg\^" /i /C:.jpeg\^" /i /C:.png\^" /i /C:.lnk\^" /i /C:.mp3\^" /i /C:.mp4\^" /i /C:.mkv\^" /i /C:.avi\^" /i /C:.ico\^" /i /C:.bat\^" /i /C:.cmd\^" /i /C:.reg\^" /i /C:.zip\^" /i /C:.rar\^" /i /C:.7z\^" /i /C:.ini\^" /i /C:.html\^" /i /C:.ppt\^" /i /C:.docx\^" /i /C:.xlsx\^" /i /C:.chm\^" /i /C:.aspx\^" /i /C:.app\^" /i /C:? > %appdata%\ChichoSSHelper\type.txt
 "%appdata%\ChichoSSHelper\type.txt"
-goto D
+goto E
 
 :journalFileStream
 cls
 fsutil usn readJournal c: csv | findstr /I /C:"0x00200120" > %appdata%\ChichoSSHelper\streams.txt
 "%appdata%\ChichoSSHelper\streams.txt"
-goto D
+goto E
 
 :journalExplorerRestart
 cls
 fsutil usn readJournal c: csv | findstr /i /C:0x00000100 | findstr /i /C:explorer | findstr /i /C:.pf\^" > %appdata%\ChichoSSHelper\restartexplorer.txt
 "%appdata%\ChichoSSHelper\restartexplorer.txt"
-goto D
+goto E
 
 :journalJarcache
 cls
 fsutil usn readJournal c: csv | findstr /i /C:"0x00000004" /i /C:"0x00000102" | findstr /i /C:"jar_cache" /i /C:".timestamp" > %appdata%\ChichoSSHelper\jarcache.txt
 "%appdata%\ChichoSSHelper\jarcache.txt"
-goto D
+goto E
 
 :journalSecurityChanges
 cls
 fsutil usn readjournal c: csv | findstr /i /C:"0x00000800" | findstr /i /C:.exe\^" /i /C:Prefetch > %appdata%\ChichoSSHelper\securitychanges.txt
 "%appdata%\ChichoSSHelper\securitychanges.txt"
-goto D
-
-
-:: Regedit
-
-:ExecutableFilesRan
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings" /f
-start regedit
-echo Done
-goto F
-
-:DisallowRun
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /f
-start regedit
-echo Done
-goto F
-
-:MuiCache
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\Shell\MuiCache" /f
-start regedit
-echo Done
-goto F
-
-:UserAssist
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist" /f
-start regedit
-echo Done
-goto F
-
-:ArcHistory
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\WinRAR\ArcHistory" /f
-start regedit
-echo Done
-goto F
-
-:AppSwitched
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched" /f
-start regedit
-echo Done
-goto F
-
-:FileTypeAssociations
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts" /f
-start regedit
-echo Done
-goto F
-
-:OpenSaveDialogBox
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSavePidlMRU" /f
-start regedit
-echo Done
-goto F
-
-:PrefetchParameters
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /f
-start regedit
-echo Done
-goto F
-
-:MountedVolumes
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\MountedDevices" /f
-start regedit
-echo Done
-goto F
-
-:ExecutedPrograms
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" /f
-start regedit
-echo Done
-goto F
-
-:OpenWhitelist
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.dll\OpenWithList" /f
-start regedit
-echo Done
-goto F
-
-:RecentDocs
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs" /f
-start regedit
-echo Done
-goto F
-
-:ShowJumpView
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\ShowJumpView" /f
-start regedit
-echo Done
-goto F
-
-:LastVisitedPidlMRU
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidlMRU" /f
-start regedit
-echo Done
-goto F
-
-:Environment
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f
-start regedit
-echo Done
-goto F
-
-:FirewallRules
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
-start regedit
-echo Done
-goto F
-
-:Uninstall
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall" /f
-start regedit
-echo Done
-goto F
-
-:PropertyStore
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\LowRegistry\Audio\PolicyConfig\PropertyStore" /f
-start regedit
-echo Done
-goto F
-
-:DirectInput
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectInput" /f
-start regedit
-echo Done
-goto F
-
-:SetFileDate
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\NoNonsense\SetFileDate" /f
-start regedit
-echo Done
-goto F
-
-:CIDsizeMRU
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\CIDSizeMRU" /f
-start regedit
-echo Done
-goto F
-
-:TypedPaths
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths" /f
-start regedit
-echo Done
-goto F
-
-:StartMenuInternet
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet" /f
-start regedit
-echo Done
-goto F
-
-:CommandProcessor
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor" /f
-start regedit
-echo Done
-goto F
-
-:VolumeInfoCache
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Search\VolumeInfoCache" /f
-start regedit
-echo Done
-goto F
-
-:HKIDS
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\AMD\HKIDs" /f
-start regedit
-echo Done
-goto F
-
-:USBStorage
-cls
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR" /f
-start regedit
-echo Done
-goto F
-
-
+goto E
 
 :: CMD Y Powershell
 
@@ -1016,105 +868,289 @@ cls
 powershell "MMAgent"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :NtfsLogsState
 cls
 powershell "Get-WinEvent -ListLog Microsoft-Windows-Ntfs/Operational | Format-List *" | findstr IsEnabled
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :QueryDPS
 cls
 sc query dps
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :QueryPcaSvc
 cls
 sc query PcaSvc
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :QueryEventlog
 cls
 sc query Eventlog
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :QuerySysMain
 cls
 sc query sysmain
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :QueryDiagTrack
 cls
 sc query diagtrack
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :QueryAppInfo
 cls
 sc query appinfo
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :TaskList
 cls
 tasklist
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
-
-:Recycle
-cls
-start "" "C:\$Recycle.bin"
-echo %c%Press %u%ENTER %c%to return to the menu
-pause >nul
-goto E
+goto F
 
 :ConsoleHost
 cls
 explorer %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
-
-:BackgroundP
-cls
-explorer.exe shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}
-echo %c%Press %u%ENTER %c%to return to the menu
-pause >nul
-goto E
+goto F
 
 :ShadowsCopies
 cls
 vssadmin list shadows
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :IpConfig
 cls
 ipconfig /displaydns
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
 
 :Tree
 cls
 tree
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto E
+goto F
+
+:: Regedit
+
+:ExecutableFilesRan
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings" /f
+start regedit
+echo Done
+goto G
+
+:DisallowRun
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /f
+start regedit
+echo Done
+goto G
+
+:MuiCache
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\Shell\MuiCache" /f
+start regedit
+echo Done
+goto G
+
+:UserAssist
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist" /f
+start regedit
+echo Done
+goto G
+
+:ArcHistory
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\WinRAR\ArcHistory" /f
+start regedit
+echo Done
+goto G
+
+:AppSwitched
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched" /f
+start regedit
+echo Done
+goto G
+
+:FileTypeAssociations
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts" /f
+start regedit
+echo Done
+goto G
+
+:OpenSaveDialogBox
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSavePidlMRU" /f
+start regedit
+echo Done
+goto G
+
+:PrefetchParameters
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /f
+start regedit
+echo Done
+goto G
+
+:MountedVolumes
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\MountedDevices" /f
+start regedit
+echo Done
+goto G
+
+:ExecutedPrograms
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" /f
+start regedit
+echo Done
+goto G
+
+:OpenWhitelist
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.dll\OpenWithList" /f
+start regedit
+echo Done
+goto G
+
+:RecentDocs
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs" /f
+start regedit
+echo Done
+goto G
+
+:ShowJumpView
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\ShowJumpView" /f
+start regedit
+echo Done
+goto G
+
+:LastVisitedPidlMRU
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidlMRU" /f
+start regedit
+echo Done
+goto G
+
+:Environment
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f
+start regedit
+echo Done
+goto G
+
+:FirewallRules
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
+start regedit
+echo Done
+goto G
+
+:Uninstall
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall" /f
+start regedit
+echo Done
+goto G
+
+:PropertyStore
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\LowRegistry\Audio\PolicyConfig\PropertyStore" /f
+start regedit
+echo Done
+goto G
+
+:DirectInput
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectInput" /f
+start regedit
+echo Done
+goto G
+
+:SetFileDate
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\NoNonsense\SetFileDate" /f
+start regedit
+echo Done
+goto G
+
+:CIDsizeMRU
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\CIDSizeMRU" /f
+start regedit
+echo Done
+goto G
+
+:TypedPaths
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths" /f
+start regedit
+echo Done
+goto G
+
+:StartMenuInternet
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet" /f
+start regedit
+echo Done
+goto G
+
+:CommandProcessor
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor" /f
+start regedit
+echo Done
+goto G
+
+:VolumeInfoCache
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Search\VolumeInfoCache" /f
+start regedit
+echo Done
+goto G
+
+:HKIDS
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\AMD\HKIDs" /f
+start regedit
+echo Done
+goto G
+
+:USBStorage
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR" /f
+start regedit
+echo Done
+goto G
 
 :: EventViewer
 
@@ -1123,64 +1159,63 @@ cls
 powershell Get-EventLog -LogName Security -InstanceId 4616
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto G
+goto H
 
 :UserChange
 cls
 powershell Get-EventLog -LogName Security -InstanceId 4634
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto G
+goto H
 
 :EventEnd
 cls
 powershell Get-EventLog -LogName Security -InstanceId 1100
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto G
+goto H
 
 :LogoutSession
 cls
 powershell Get-EventLog -LogName Security -InstanceId 4647
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto G
+goto H
 
 :LoginSession
 cls
 powershell Get-EventLog -LogName Security -InstanceId 4624
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto G
+goto H
 
 :LogClear
 cls
 powershell Get-EventLog -LogName Security -InstanceId 1102
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto G
+goto H
 
 :ApplicationsJournal
 cls
 powershell Get-EventLog -LogName Application -InstanceId 3079
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto G
+goto H
 
 :NtfsJournal
 cls
 powershell Get-WinEvent Microsoft-Windows-Ntfs/Operational | findstr 501
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto G
+goto H
 
 :USB
 cls
 powershell Get-WinEvent Microsoft-Windows-Kernel-PnP/Configuration | findstr 410
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
-goto G
-
+goto H
 
 :: Macros
 
@@ -1332,7 +1367,6 @@ echo %c%Lix not found
 ping localhost -n 5 >nul
 goto menu
 
-
 :: Programas de Grabacion
 
 :RecordingSoftwares
@@ -1415,12 +1449,22 @@ set /p vpn=
 if /i %vpn%==Yes (goto menu) else (exit)
 
 :: Paginas bloqueadas
+
 :BlockedSites
 notepad "C:\Windows\System32\Drivers\etc\Hosts"
 goto menu
 
 :: Borrar
+
 :Destruct
+title Thanks for using Chicho SS Helper!
+mode 42,5
+cls
+echo.            
+echo %u%Created by: %c%Chicho#7585
+echo %u%Github: %c%https://github.com/Gastxn
+echo %u%Version: %c%1.5
+timeout /t 7 >nul
 cls
 rmdir /s /q %appdata%\ChichoSSHelper
 exit
