@@ -192,7 +192,7 @@ echo %u%                            Version: %c%1.5
 timeout /t 15 >nul
 goto menu
 
-:: Tools
+:: Programas Manuales
 :A
 cls
 echo %c%Manual Tools
@@ -321,7 +321,7 @@ echo %u%[%c%JER%u%] Explorer restart
 echo %u%[%c%JDF%u%] Deleted files
 echo %u%[%c%JRF%u%] Renamed files
 echo %u%[%c%JFS%u%] File streams
-echo %u%[%c%JFT%u%] Type
+echo %u%[%c%JFT%u%] File Type
 echo %u%[%c%JJC%u%] Jarcache
 echo %u%[%c%Menu%u%] Go Menu
 echo.
@@ -354,6 +354,7 @@ echo %u%[%c%PCA%u%] View PcaSvc Process
 echo %u%[%c%EVL%u%] View Eventlog Process
 echo %u%[%c%SYS%u%] View SysMain Process
 echo %u%[%c%DIA%u%] View DiagTrack Process
+echo %u%[%c%APPI%u%] View Appinfo Process
 echo %u%[%c%NS%u%] Check if Ntfs logs are enabled
 echo %u%[%c%Menu%u%] Go Menu
 echo.
@@ -372,6 +373,7 @@ if %M%==PCA goto QueryPcaSvc
 if %M%==EVL goto QueryEventlog
 if %M%==SYS goto QuerySysMain
 if %M%==DIA goto QueryDiagTrack
+if %M%==APPI goto QueryAppInfo
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -474,14 +476,14 @@ echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
 goto G
 
-:: Stuff
+:: Cositasss
 
 if %M%==Macro goto Macro
 if %M%==Sites goto BlockedSites
 if %M%==Record goto RecordingSoftwares
 if %M%==Quit goto Destruct
 
-:: Download tools
+:: Programas Para recuperar cosas
 
 :Clever
 cls
@@ -529,7 +531,7 @@ powershell (new-object System.Net.WebClient).DownloadFile('https://remocdn1.azur
 "%appdata%\ChichoSSHelper\remo-recover-windows.exe"
 goto B
 
-:: Manual
+:: Programas Manuales
 
 :ProcessHacker2
 cls
@@ -729,7 +731,7 @@ powershell (new-object System.Net.WebClient).DownloadFile('https://github.com/po
 "%appdata%\ChichoSSHelper\JournalTrace.exe"
 goto A
 
-:: Automatic
+:: Programas Automaticos
 
 :Echo
 cls
@@ -762,7 +764,7 @@ powershell (new-object System.Net.WebClient).DownloadFile('https://dl.avenge.ac/
 goto C
 
 
-:: USN journal paths
+:: USN journal
 
 :journalDeletedFiles
 cls
@@ -807,7 +809,7 @@ fsutil usn readjournal c: csv | findstr /i /C:"0x00000800" | findstr /i /C:.exe\
 goto D
 
 
-:: Regedit paths
+:: Regedit
 
 :ExecutableFilesRan
 cls
@@ -1007,7 +1009,7 @@ goto F
 
 
 
-:: Commands
+:: CMD Y Powershell
 
 :MMAgent
 cls
@@ -1054,6 +1056,13 @@ goto E
 :QueryDiagTrack
 cls
 sc query diagtrack
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto E
+
+:QueryAppInfo
+cls
+sc query appinfo
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto E
@@ -1107,7 +1116,7 @@ echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto E
 
-:: EventViewer Logs
+:: EventViewer
 
 :TimeChange
 cls
@@ -1173,7 +1182,7 @@ pause >nul
 goto G
 
 
-:: Macro paths
+:: Macros
 
 :Macro
 cls
@@ -1324,7 +1333,7 @@ ping localhost -n 5 >nul
 goto menu
 
 
-:: Recording softwares check
+:: Programas de Grabacion
 
 :RecordingSoftwares
 cls
@@ -1405,14 +1414,13 @@ if %errorlevel%==0 echo %c%IPVanish VPN is running, continue to SS? (Yes, No)
 set /p vpn=
 if /i %vpn%==Yes (goto menu) else (exit)
 
-:: Blocked websites
+:: Paginas bloqueadas
 :BlockedSites
 notepad "C:\Windows\System32\Drivers\etc\Hosts"
 goto menu
 
-:: Destruct
+:: Borrar
 :Destruct
 cls
-rmdir /s /q %appdata%\ChichoSSHelper
 rmdir /s /q %appdata%\ChichoSSHelper
 exit
