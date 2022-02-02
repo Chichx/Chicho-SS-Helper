@@ -256,6 +256,8 @@ echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
 goto A
 
+
+
 :B
 cls
 echo %c%Recovery Files Tools
@@ -313,6 +315,11 @@ echo %u%[%c%MC%u%] .Minecraft
 echo %u%[%c%RB%u%] RecycleBin
 echo %u%[%c%BP%u%] Background Programs
 echo %u%[%c%RN%u%] Recent
+echo %u%[%c%GPE%u%] Gpedit
+echo %u%[%c%SAM%u%] Shell Application Manager
+echo %u%[%c%HIS%u%] History
+echo %u%[%c%UL%u%] Usage Logs
+echo %u%[%c%CF%u%] Control Folders
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Please, choose:%u% "
@@ -322,6 +329,11 @@ if %M%==MC goto Puntominecraft
 if %M%==RB goto RecycleBin
 if %M%==BP goto BackgroundP
 if %M%==RN goto Recent
+if %M%==GPE goto Gpedit
+if %M%==SAM goto ShellApplicationManager
+if %M%==HIS goto History
+if %M%==UL goto UsageLogs
+if %M%==CF goto ControlFolders
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -813,6 +825,41 @@ goto D
 :Recent
 cls
 start Shell:Recent
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:Gpedit
+cls
+start gpedit.msc
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:ShellApplicationManager
+cls
+start appwiz.cpl
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:History
+cls
+start "" "C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\History"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:UsageLogs
+cls
+start "" "C:\Users\%username%\AppData\Local\Microsoft\CLR_v4.0\UsageLogs\"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:ControlFolders
+cls
+start Control folders
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
