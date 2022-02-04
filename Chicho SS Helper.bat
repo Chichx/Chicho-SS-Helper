@@ -180,6 +180,7 @@ goto menu
 
 :: Programas Manuales
 :A
+chcp 437>nul
 cls
 echo %c%Manual Tools
 echo %u%[%c%PH2%u%] Download Process Hacker 2
@@ -252,6 +253,7 @@ timeout /t 1 /nobreak >nul
 goto A
 
 :B
+chcp 437>nul
 cls
 echo %c%Recovery Files Tools
 echo %u%[%c%Clever%u%] Download Clever Recover Files
@@ -279,6 +281,7 @@ timeout /t 1 /nobreak >nul
 goto B
 
 :C
+chcp 437>nul
 cls
 echo %c%Automatic Tools
 echo %u%[%c%Echo%u%] Download Echo
@@ -300,6 +303,7 @@ timeout /t 1 /nobreak >nul
 goto C
 
 :D
+chcp 437>nul
 cls
 echo %c%Explorer
 echo %u%[%c%PRE%u%] Prefetch
@@ -339,6 +343,7 @@ timeout /t 1 /nobreak >nul
 goto D
 
 :E
+chcp 437>nul
 cls
 echo %c%USN Journal
 echo %u%[%c%JSC%u%] Security changes
@@ -364,6 +369,7 @@ timeout /t 1 /nobreak >nul
 goto D
 
 :F
+chcp 437>nul
 cls
 echo %c%Commands
 echo %u%[%c%TL%u%] TaskList
@@ -403,6 +409,7 @@ timeout /t 1 /nobreak >nul
 goto E
 
 :G
+chcp 437>nul
 cls
 echo %c%Regedit Paths
 echo %u%[%c%EF%u%] Executable files ran
@@ -433,8 +440,6 @@ echo %u%[%c%CP%u%] Command Processor
 echo %u%[%c%VIC%u%] VolumeInfoCache
 echo %u%[%c%HKID%u%] HKIDs (AMD ONLY)
 echo %u%[%c%USBS%u%] USB Storage
-
-
 echo %u%[%c%Menu%u%] Go Menu
 echo. 
 set /p M="%c%Please, choose:%u% "
@@ -472,6 +477,7 @@ timeout /t 1 /nobreak >nul
 goto F
 
 :H
+chcp 437>nul
 cls
 echo %c%EventViewer Logs
 echo %u%[%c%TC%u%] Check for Time change
