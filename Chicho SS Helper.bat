@@ -31,6 +31,7 @@ cls
 for /f "delims=: tokens=2" %%A in ('chcp') do set "chcp=%%A">nul
 
 chcp 437>nul
+chcp 65001 >nul 
 
 set curllink=https://cdn.discordapp.com/attachments/938717195146502174/939241205970128916/curl.exe
 set curlcabundlelink=https://cdn.discordapp.com/attachments/938717195146502174/939240713504292944/curl-ca-bundle.crt
@@ -57,9 +58,14 @@ cls
 :: Pone el pin en el webhook
 %temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"content\":\":white_check_mark: **New PIN** \n\n:clock1: **Opened on**: %date% - %time% \n**PIN for %USERNAME%** \n```asciidoc\nPIN: %pin%\n\n``` \"}" %webhook%
 cls
-echo You can find your Pin from Discord channel.
+echo       %p%███████╗███╗   ██╗████████╗███████╗██████╗     ██████╗ ██╗███╗   ██╗
+echo       ██╔════╝████╗  ██║╚══██╔══╝██╔════╝██╔══██╗    ██╔══██╗██║████╗  ██║
+echo       █████╗  ██╔██╗ ██║   ██║   █████╗  ██████╔╝    ██████╔╝██║██╔██╗ ██║%u%
+echo       ██╔══╝  ██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗    ██╔═══╝ ██║██║╚██╗██║
+echo       ███████╗██║ ╚████║   ██║   ███████╗██║  ██║    ██║     ██║██║ ╚████║
+echo       ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═══╝
 
-set /p pinid= [30m---[0m Pin: 
+set /p pinid=Pin: 
 
 if %pinid%==%pin% goto authenticated
 if NOT %pinid%==%pin% goto fail
@@ -75,7 +81,7 @@ echo.
 cls & echo %u%[%g%+%u%] %g%Successfully authenticated.
 echo.
 echo %u%Developed by: %g%Chicho#1337
-%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"content\":\":white_check_mark: **Pin Successfully Used.** \n\n:detective: **Pin**: **%pin%**\n:clock1: **Opened on**: %date% - %time% \n:man_pouting: **Username**: %username% \n:computer: **Computer Name**: %COMPUTERNAME% \n:window: **OS**: %os% \"}" %webhook%
+%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"content\":\":white_check_mark: **Pin Successfully Used.** \n\n:detective: **Pin**: __%pin%__\n\n:clock1: **Opened on**: %date% - %time% \n:man_pouting: **Username**: %username% \n:computer: **Computer Name**: %COMPUTERNAME% \n:window: **OS**: %os% \"}" %webhook%
 %temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"content\":\":white_check_mark: **Successfully authenticated.** \n\n:clock1: **Opened on**: %date% - %time% \n:detective: **Pin Used**: %pin% \n:man_pouting: **Username**: %username% \n:computer: **Computer Name**: %COMPUTERNAME% \n:window: **OS**: %os%\n:detective: **IP**: %ipv4% \"}" %auth_logs_webhook%
 echo.
 timeout /t 4 >nul & cls & goto menu
@@ -98,6 +104,7 @@ timeout /t 4 >nul & exit /b
 
 :Presets
 cls
+chcp 437>nul
 echo Choose a Preset.
 echo %b%Blue%u%, %d%Cyan%u%, %g%Green%u%, %y%Yellow%u%, %r%Red%u%.
 set /p preset=
@@ -142,6 +149,7 @@ goto menu
 
 :menu
 cls
+chcp 437>nul
 chcp 65001 >nul 
 echo.
 echo     %c%    ██████╗██╗  ██╗██╗ ██████╗██╗  ██╗ ██████╗     ███████╗███████╗    ██╗  ██╗███████╗██╗     ██████╗ 
@@ -190,6 +198,7 @@ goto menu
 
 ::Credits Rancio Modified for Chicho
 :hwid
+chcp 437>nul
 cd %appdata%\ChichoSSHelper\
 
 echo User Name       : %UserName% > %appdata%\ChichoSSHelper\HWID.txt
@@ -198,6 +207,7 @@ echo User Domain     : %UserDomain% >> %appdata%\ChichoSSHelper\HWID.txt
 
 goto :other
 :other
+chcp 437>nul
 Powershell "wmic path win32_computersystemproduct get uuid" >> %appdata%\ChichoSSHelper\"HWID.txt"
 Powershell "getmac" >> %appdata%\ChichoSSHelper\"HWID.txt"
 Powershell "Get-WmiObject -Class Win32_Processor -ComputerName. | Select-Object -Property ProcessorId*" >> %appdata%\ChichoSSHelper\"HWID.txt"
