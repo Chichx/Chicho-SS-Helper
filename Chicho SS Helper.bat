@@ -50,7 +50,7 @@ if NOT exist "%temp%\curl.exe" echo CURL.EXE not found. & pause >nul & exit
 if NOT exist "%temp%\curl-ca-bundle.crt" echo CURL-CA-BUNDLE.CRT not found. & pause >nul & exit
 
 :: Genera pin
-FOR /L %%b IN (0, 1, 5) DO (
+FOR /L %%b IN (1, 1, 6) DO (
 SET /A pin_num=!RANDOM! * 59 / 32768 + 1
 for /F %%c in ('echo %%alfanum:~!pin_num!^,1%%') do set pin=!pin!%%c
 )
@@ -392,12 +392,13 @@ chcp 437>nul
 cls
 echo %c%USN Journal
 echo %u%[%c%JSC%u%] Security changes
-echo %u%[%c%JER%u%] Explorer restart
+echo %u%[%c%JRP%u%] Restart Process
 echo %u%[%c%JDF%u%] Deleted files
 echo %u%[%c%JRF%u%] Renamed files
 echo %u%[%c%JFS%u%] File streams
 echo %u%[%c%JFT%u%] File Type
 echo %u%[%c%JJC%u%] Jarcache
+echo %u%[%c%JEC%u%] Empty Character
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Please, choose:%u% "
@@ -405,9 +406,10 @@ if %M%==JDF goto journalDeletedFiles
 if %M%==JRF goto journalRenamedFiles
 if %M%==JFT goto journalFileType
 if %M%==JFS goto journalFileStream
-if %M%==JER goto journalExplorerRestart
+if %M%==JER goto journalRestartProcess
 if %M%==JJC goto journalJarcache
 if %M%==JSC goto journalSecurityChanges
+if %M%==JEC goto journalEmptyCharacter
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -941,44 +943,50 @@ goto D
 
 :journalDeletedFiles
 cls
-fsutil usn readjournal c: csv | findstr /i /C:"0x80000200" | findstr /i /C:.exe\^" /i /C:.py\^" /i /C:.jar\^" /i /C:.dll\^" /i /C:.com\^" /i /C:.pif\^" /i /C:.txt\^" /i /C:.jpg\^" /i /C:.jpeg\^" /i /C:.png\^" /i /C:.lnk\^" /i /C:.mp3\^" /i /C:.mp4\^" /i /C:.mkv\^" /i /C:.avi\^" /i /C:.ico\^" /i /C:.bat\^" /i /C:.cmd\^" /i /C:.reg\^" /i /C:.zip\^" /i /C:.rar\^" /i /C:.7z\^" /i /C:.ini\^" /i /C:.html\^" /i /C:.ppt\^" /i /C:.docx\^" /i /C:.xlsx\^" /i /C:.chm\^" /i /C:.aspx\^" /i /C:.app\^" /i /C:? > %appdata%\ChichoSSHelper\deletedfiles.txt
-"%appdata%\ChichoSSHelper\deletedfiles.txt"
+fsutil usn readjournal c: csv | findstr /i /C:"0x80000200" | findstr /i /C:.exe\^" /i /C:.py\^" /i /C:.jar\^" /i /C:.dll\^" /i /C:.com\^" /i /C:.pif\^" /i /C:.txt\^" /i /C:.jpg\^" /i /C:.jpeg\^" /i /C:.png\^" /i /C:.lnk\^" /i /C:.mp3\^" /i /C:.mp4\^" /i /C:.mkv\^" /i /C:.avi\^" /i /C:.ico\^" /i /C:.bat\^" /i /C:.cmd\^" /i /C:.reg\^" /i /C:.zip\^" /i /C:.rar\^" /i /C:.7z\^" /i /C:.ini\^" /i /C:.html\^" /i /C:.ppt\^" /i /C:.docx\^" /i /C:.xlsx\^" /i /C:.chm\^" /i /C:.aspx\^" /i /C:.app\^" /i /C:? > %appdata%\ChichoSSHelper\DeletedFiles.txt
+"%appdata%\ChichoSSHelper\DeletedFiles.txt"
 goto E
 
 :journalRenamedFiles
 cls
-fsutil usn readjournal c: csv | findstr /i /C:"0x00002000" /i /C:"0x00001000" | findstr /i /C:.exe\^" /i /C:.py\^" /i /C:.jar\^" /i /C:.dll\^" /i /C:.com\^" /i /C:.pif\^" /i /C:.txt\^" /i /C:.jpg\^" /i /C:.jpeg\^" /i /C:.png\^" /i /C:.lnk\^" /i /C:.mp3\^" /i /C:.mp4\^" /i /C:.mkv\^" /i /C:.avi\^" /i /C:.ico\^" /i /C:.bat\^" /i /C:.cmd\^" /i /C:.reg\^" /i /C:.zip\^" /i /C:.rar\^" /i /C:.7z\^" /i /C:.ini\^" /i /C:.html\^" /i /C:.ppt\^" /i /C:.docx\^" /i /C:.xlsx\^" /i /C:.chm\^" /i /C:.aspx\^" /i /C:.app\^" /i /C:? > %appdata%\ChichoSSHelper\renamedfiles.txt
-"%appdata%\ChichoSSHelper\renamedfiles.txt"
+fsutil usn readjournal c: csv | findstr /i /C:"0x00002000" /i /C:"0x00001000" | findstr /i /C:.exe\^" /i /C:.py\^" /i /C:.jar\^" /i /C:.dll\^" /i /C:.com\^" /i /C:.pif\^" /i /C:.txt\^" /i /C:.jpg\^" /i /C:.jpeg\^" /i /C:.png\^" /i /C:.lnk\^" /i /C:.mp3\^" /i /C:.mp4\^" /i /C:.mkv\^" /i /C:.avi\^" /i /C:.ico\^" /i /C:.bat\^" /i /C:.cmd\^" /i /C:.reg\^" /i /C:.zip\^" /i /C:.rar\^" /i /C:.7z\^" /i /C:.ini\^" /i /C:.html\^" /i /C:.ppt\^" /i /C:.docx\^" /i /C:.xlsx\^" /i /C:.chm\^" /i /C:.aspx\^" /i /C:.app\^" /i /C:? > %appdata%\ChichoSSHelper\RenamedFiles.txt
+"%appdata%\ChichoSSHelper\RenamedFiles.txt"
 goto E
 
 :journalFileType
 cls
-fsutil usn readJournal c: csv | findstr /i /C:"0x00002020" /i /C:"0x00000020" /i /C:"0x00200000" | findstr /i /C:"0x80008000" /i /C:"0x00008006" /i /C:"0x80200120" | findstr /i /C:.exe\^" /i /C:.py\^" /i /C:.jar\^" /i /C:.dll\^" /i /C:.com\^" /i /C:.pif\^" /i /C:.txt\^" /i /C:.jpg\^" /i /C:.jpeg\^" /i /C:.png\^" /i /C:.lnk\^" /i /C:.mp3\^" /i /C:.mp4\^" /i /C:.mkv\^" /i /C:.avi\^" /i /C:.ico\^" /i /C:.bat\^" /i /C:.cmd\^" /i /C:.reg\^" /i /C:.zip\^" /i /C:.rar\^" /i /C:.7z\^" /i /C:.ini\^" /i /C:.html\^" /i /C:.ppt\^" /i /C:.docx\^" /i /C:.xlsx\^" /i /C:.chm\^" /i /C:.aspx\^" /i /C:.app\^" /i /C:? > %appdata%\ChichoSSHelper\type.txt
-"%appdata%\ChichoSSHelper\type.txt"
+fsutil usn readJournal c: csv | findstr /i /C:"0x00002020" /i /C:"0x00000020" /i /C:"0x00200000" | findstr /i /C:"0x80008000" /i /C:"0x00008006" /i /C:"0x80200120" | findstr /i /C:.exe\^" /i /C:.py\^" /i /C:.jar\^" /i /C:.dll\^" /i /C:.com\^" /i /C:.pif\^" /i /C:.txt\^" /i /C:.jpg\^" /i /C:.jpeg\^" /i /C:.png\^" /i /C:.lnk\^" /i /C:.mp3\^" /i /C:.mp4\^" /i /C:.mkv\^" /i /C:.avi\^" /i /C:.ico\^" /i /C:.bat\^" /i /C:.cmd\^" /i /C:.reg\^" /i /C:.zip\^" /i /C:.rar\^" /i /C:.7z\^" /i /C:.ini\^" /i /C:.html\^" /i /C:.ppt\^" /i /C:.docx\^" /i /C:.xlsx\^" /i /C:.chm\^" /i /C:.aspx\^" /i /C:.app\^" /i /C:? > %appdata%\ChichoSSHelper\FileType.txt
+"%appdata%\ChichoSSHelper\FileType.txt"
 goto E
 
 :journalFileStream
 cls
-fsutil usn readJournal c: csv | findstr /I /C:"0x00200120" > %appdata%\ChichoSSHelper\streams.txt
-"%appdata%\ChichoSSHelper\streams.txt"
+fsutil usn readJournal c: csv | findstr /I /C:"0x00200120" > %appdata%\ChichoSSHelper\Streams.txt
+"%appdata%\ChichoSSHelper\Streams.txt"
 goto E
 
-:journalExplorerRestart
+:journalRestartProcess
 cls
-fsutil usn readJournal c: csv | findstr /i /C:0x00000100 | findstr /i /C:explorer | findstr /i /C:.pf\^" > %appdata%\ChichoSSHelper\restartexplorer.txt
-"%appdata%\ChichoSSHelper\restartexplorer.txt"
+fsutil usn readjournal c: csv | findstr /i /c:.evtx | findstr /i /c:0x80000200 > %appdata%\ChichoSSHelper\RestartProcess.txt
+"%appdata%\ChichoSSHelper\RestartProcess.txt"
 goto E
 
 :journalJarcache
 cls
-fsutil usn readJournal c: csv | findstr /i /C:"0x00000004" /i /C:"0x00000102" | findstr /i /C:"jar_cache" /i /C:".timestamp" > %appdata%\ChichoSSHelper\jarcache.txt
-"%appdata%\ChichoSSHelper\jarcache.txt"
+fsutil usn readJournal c: csv | findstr /i /C:"0x00000004" /i /C:"0x00000102" | findstr /i /C:"jar_cache" /i /C:".timestamp" > %appdata%\ChichoSSHelper\JarCache.txt
+"%appdata%\ChichoSSHelper\JarCache.txt"
 goto E
 
 :journalSecurityChanges
 cls
-fsutil usn readjournal c: csv | findstr /i /C:"0x00000800" | findstr /i /C:.exe\^" /i /C:Prefetch > %appdata%\ChichoSSHelper\securitychanges.txt
-"%appdata%\ChichoSSHelper\securitychanges.txt"
+fsutil usn readjournal c: csv | findstr /i /C:"0x00000800" | findstr /i /C:.exe\^" /i /C:Prefetch > %appdata%\ChichoSSHelper\SecurityChanges.txt
+"%appdata%\ChichoSSHelper\SecurityChanges.txt"
+goto E
+
+:journalEmptyCharacter
+cls
+fsutil usn readjournal c: csv | findstr /i /C:"?" > %appdata%\ChichoSSHelper\EmptyCharacter.txt
+"%appdata%\ChichoSSHelper\EmptyCharacter.txt"
 goto E
 
 :: CMD Y Powershell
