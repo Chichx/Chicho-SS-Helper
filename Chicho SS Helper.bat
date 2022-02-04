@@ -1,10 +1,11 @@
 @echo off
-title Chicho SS Helper - chicho#7585 - 2.0
+title Chicho SS Helper - Chicho#1337 - 2.0
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 
 md %appdata%\ChichoSSHelper
 curl -1 icanhazip.com 1> tmpwanip & cls & set /p ipv4= < tmpwanip & set /p ipv4= < tmpwanip & del /f tmpwanip
-SET chicho_webhook=
+SET webhook=
+SET auth_logs_webhook=
 
 :variables
 set g=[92m
@@ -25,38 +26,72 @@ set g2=[102m
 set r2=[101m
 set t=[40m
 
-:check
-ping www.google.com -n 1 -w 1000 >nul
-if errorlevel 1 (echo An error has occured. Please connect to internet and try again. & timeout /t 3 >nul & exit /b) else (goto :connected)
+cls
 
-:connected
-for /f %%A in ('curl -k -s https://pastebin.com/raw/0aB3jUtj') do set "auth=%%A"
+for /f "delims=: tokens=2" %%A in ('chcp') do set "chcp=%%A">nul
 
-:hwidvars
-for /f "tokens=2 delims==" %%A in ('wmic csproduct get uuid /format:value ^| find "="') do set uuid=%%A
+chcp 437>nul
 
-:auth
-set hwid=%uuid%
-if "%auth%"=="%hwid%" (goto :success) else (goto :fail)
+set curllink=https://cdn.discordapp.com/attachments/938717195146502174/939241205970128916/curl.exe
+set curlcabundlelink=https://cdn.discordapp.com/attachments/938717195146502174/939240713504292944/curl-ca-bundle.crt
 
-:success
+setlocal ENABLEEXTENSIONS 
+setlocal ENABLEDELAYEDEXPANSION
+
+set alfanum=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
+
+set pin=
+
+if NOT exist %temp%\curl.exe echo Downloading CURL.exe, please wait... & powershell -Command "Invoke-WebRequest %curllink% -OutFile %temp%\curl.exe" >nul 
+if NOT exist %temp%\curl-ca-bundle.crt echo Downloading CURL-CA-BUNDLE.crt, please wait... & powershell -Command "Invoke-WebRequest %curlcabundlelink% -OutFile %temp%\curl-ca-bundle.crt" >nul 
+
+if NOT exist "%temp%\curl.exe" echo CURL.EXE not found. & pause >nul & exit
+if NOT exist "%temp%\curl-ca-bundle.crt" echo CURL-CA-BUNDLE.CRT not found. & pause >nul & exit
+
+:: Genera pin
+FOR /L %%b IN (0, 1, 5) DO (
+SET /A pin_num=!RANDOM! * 59 / 32768 + 1
+for /F %%c in ('echo %%alfanum:~!pin_num!^,1%%') do set pin=!pin!%%c
+)
+cls
+:: Pone el pin en el webhook
+%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"content\":\":white_check_mark: **New PIN** \n\n:clock1: **Opened on**: %date% - %time% \n**PIN for %USERNAME%** \n```asciidoc\nPIN: %pin%\n\n``` \"}" %webhook%
+cls
+echo You can find your Pin from Discord channel.
+
+set /p pinid= [30m---[0m Pin: 
+
+if %pinid%==%pin% goto authenticated
+if NOT %pinid%==%pin% goto fail
+
+:: Authenticated 
+chcp %chcp% & set chcp=
+
+:authenticated
+set alfanum= & set pin_num= & set alfanum= & chcp %chcp% & set chcp= &
+cls
 color a
 echo.
-echo %u%[%g%+%u%] %g%Successfully authenticated.
+cls & echo %u%[%g%+%u%] %g%Successfully authenticated.
 echo.
-echo %u%Developed by: %g%Chicho#7585
+echo %u%Developed by: %g%Chicho#1337
+%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"content\":\":white_check_mark: **Pin Successfully Used.** \n\n:detective: **Pin**: **%pin%**\n:clock1: **Opened on**: %date% - %time% \n:man_pouting: **Username**: %username% \n:computer: **Computer Name**: %COMPUTERNAME% \n:window: **OS**: %os% \"}" %webhook%
+%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"content\":\":white_check_mark: **Successfully authenticated.** \n\n:clock1: **Opened on**: %date% - %time% \n:detective: **Pin Used**: %pin% \n:man_pouting: **Username**: %username% \n:computer: **Computer Name**: %COMPUTERNAME% \n:window: **OS**: %os%\n:detective: **IP**: %ipv4% \"}" %auth_logs_webhook%
 echo.
-curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"embeds\": [{\"title\": \"Successfully authenticated.\", \"color\": 5220458, \"fields\": [{\"name\": \":man_pouting: **Username**\", \"value\": \"%username%\"}, {\"name\": \":computer: **Computer Name** \", \"value\": \"%COMPUTERNAME% \"}, {\"name\": \":computer: **HWID** \", \"value\": \"%hwid% \"}, {\"name\": \":window: **OS** \", \"value\": \"%os% \"}, {\"name\": \":detective: **IP** \", \"value\": \"**%ipv4%** \"}],\"thumbnail\":{\"url\": \"https://i.imgur.com/8WBaKK8.png\"},\"footer\":{\"text\": \"Opened on %date% - %time%\"}}]}" %chicho_webhook%
 timeout /t 4 >nul & cls & goto menu
 
+:: Fail
+chcp %chcp% & set chcp=
+
 :fail
+set pinid= & set pin= & set webhook= & set alfanum= & set pin_num= & set alfanum= & chcp %chcp% & set chcp= &
+cls 
 color 0C
 echo.
-echo %hwid% | CLIP
 echo %u%[%r%-%u%] %r%Not Authenticated...
-echo %r%HWID copied to clipboard.
-echo Add to chicho#7585 to access the Chicho SS Helper
-curl -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"embeds\": [{\"title\": \"Not Authenticated...\", \"color\": 12713984, \"fields\": [{\"name\": \":man_pouting: **Username**\", \"value\": \"%username%\"}, {\"name\": \":computer: **Computer Name** \", \"value\": \"%COMPUTERNAME% \"}, {\"name\": \":computer: **HWID** \", \"value\": \"%hwid% \"}, {\"name\": \":window: **OS** \", \"value\": \"%os% \"}, {\"name\": \":detective: **IP** \", \"value\": \"**%ipv4%** \"}],\"thumbnail\":{\"url\": \"https://i.imgur.com/jqWZcxa.png\"},\"footer\":{\"text\": \"Opened on %date% - %time%\"}}]}" %chicho_webhook%
+echo %r%Invalid PIN. Please try again.
+echo Add to Chicho#1337 to access the Chicho SS Helper
+%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"content\":\":x: **Invalid Pin** \n\n:clock1: **Opened on**: %date% - %time% \n:man_pouting: **Username**: %username% \n:computer: **Computer Name**: %COMPUTERNAME% \n:window: **OS**: %os%\n:detective: **IP**: %ipv4% \"}" %auth_logs_webhook%
 rmdir /s /q %appdata%\ChichoSSHelper
 echo.
 timeout /t 4 >nul & exit /b
