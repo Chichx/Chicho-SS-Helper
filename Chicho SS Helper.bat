@@ -4,7 +4,7 @@ if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 
 md %appdata%\ChichoSSHelper
 curl -1 icanhazip.com 1> tmpwanip & cls & set /p ipv4= < tmpwanip & set /p ipv4= < tmpwanip & del /f tmpwanip
-SET webhook=https://discord.com/api/webhooks/939241358827323412/6Q_jCuvp4pJwHoOJBV2K-ImU9_sEtRxMSai8mq6RKepfHh6-A7HY5mcRjUVjbzl-x78k
+SET webhook=
 SET auth_logs_webhook=
 
 :variables
@@ -39,7 +39,7 @@ set curlcabundlelink=https://cdn.discordapp.com/attachments/938717195146502174/9
 setlocal ENABLEEXTENSIONS 
 setlocal ENABLEDELAYEDEXPANSION
 
-set alfanum=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
+set alfanum=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
 
 set pin=
 
@@ -50,7 +50,7 @@ if NOT exist "%temp%\curl.exe" echo CURL.EXE not found. & pause >nul & exit
 if NOT exist "%temp%\curl-ca-bundle.crt" echo CURL-CA-BUNDLE.CRT not found. & pause >nul & exit
 
 :: Genera pin
-FOR /L %%b IN (1, 1, 6) DO (
+FOR /L %%b IN (0, 1, 5) DO (
 SET /A pin_num=!RANDOM! * 59 / 32768 + 1
 for /F %%c in ('echo %%alfanum:~!pin_num!^,1%%') do set pin=!pin!%%c
 )
@@ -1575,10 +1575,17 @@ if /i %term%==Yes (taskkill /f /im CamRecorder.exe /t >nul & set %term%=e & goto
 
 :xcore
 tasklist /fi "ImageName eq XSplit.Core.exe" /fo csv 2>nul | find /I "XSplit.Core" >nul
-if %errorlevel%==1 goto action
+if %errorlevel%==1 goto sharex
 if %errorlevel%==0 echo %c%XSplit Core could be recording, Would you like to close it? (Yes, No)
 set /p term=
-if /i %term%==Yes (taskkill /f /im XSplit.Core.exe /t >nul & set %term%=e & goto action) else (goto action)
+if /i %term%==Yes (taskkill /f /im XSplit.Core.exe /t >nul & set %term%=e & goto sharex) else (goto sharex)
+
+:sharex
+tasklist /fi "ImageName eq ShareX.exe" /fo csv 2>nul | find /I "ShareX" >nul
+if %errorlevel%==1 goto action
+if %errorlevel%==0 echo %c%ShareX could be recording, Would you like to close it? (Yes, No)
+set /p term=
+if /i %term%==Yes (taskkill /f /im ShareX.exe /t >nul & set %term%=e & goto action) else (goto action)
 
 :action
 tasklist /fi "ImageName eq Action.exe" /fo csv 2>nul | find /I "Action" >nul
