@@ -4,7 +4,7 @@ if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 
 md %appdata%\ChichoSSHelper
 curl -1 icanhazip.com 1> tmpwanip & cls & set /p ipv4= < tmpwanip & set /p ipv4= < tmpwanip & del /f tmpwanip
-SET webhook=
+SET webhook=https://discord.com/api/webhooks/939241358827323412/6Q_jCuvp4pJwHoOJBV2K-ImU9_sEtRxMSai8mq6RKepfHh6-A7HY5mcRjUVjbzl-x78k
 SET auth_logs_webhook=
 
 :variables
@@ -1358,148 +1358,173 @@ goto H
 cls
 if exist "%localappdata%\Logitech\Logitech Gaming Software" (
 explorer "%localappdata%\Logitech\Logitech Gaming Software"
+forfiles /P "%localappdata%\Logitech\Logitech Gaming Software" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Logitech Gaming Software not found
 )
 
 if exist "%localappdata%\LGHUB" (
 explorer "%localappdata%\LGHUB"
+forfiles /P "%localappdata%\LGHUB" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
-echo %c%LGHUB not found
+echo %c%LGHUB not found 
 )
 
 if exist "%programdata%\Razer\Synapse\Accounts" (
 explorer "%programdata%\Razer\Synapse\Accounts"
+forfiles /P "%programdata%\Razer\Synapse\Accounts" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Razer Synapse not found
 )
 
 if exist "%localappdata%\Razer\Synapse3\Settings" (
 explorer "%localappdata%\Razer\Synapse3\Settings"
+forfiles /P "%localappdata%\Razer\Synapse3\Settings" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Razer Synapse 3 not found
 )
 
 if exist "%programdata%\Razer\Razer Central\Accounts" (
 explorer "%programdata%\Razer\Razer Central\Accounts"
+forfiles /P "%programdata%\Razer\Razer Central\Accounts" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Razer not found
 )
 
 if exist "%appdata%\Corsair\Cue" (
 explorer "%appdata%\Corsair\Cue"
+forfiles /P "%appdata%\Corsair\Cue" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Corsair not found
 )
 
 if exist "%localappdata%\BY-COMBO2" (
 explorer "%localappdata%\BY-COMBO2"
+forfiles /P "%localappdata%\BY-COMBO2" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Glorious not found
 )
 
 if exist "%localappdata%\JM01" (
 explorer "%localappdata%\JM01"
+forfiles /P "%localappdata%\JM01" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Aukey not found
 )
 
 if exist "C:\Program Files (x86)\Bloody7\Bloody7\Data\Mouse" (
 explorer "C:\Program Files (x86)\Bloody7\Bloody7\Data\Mouse"
+forfiles /P "C:\Program Files (x86)\Bloody7\Bloody7\Data\Mouse" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Bloody7 not found
 )
 
 if exist "C:\Program Files (x86)\Bloody7\Bloody7\UserLog\Mouse\TLcir_9EFF3FF4" (
 explorer "C:\Program Files (x86)\Bloody7\Bloody7\UserLog\Mouse\TLcir_9EFF3FF4"
+forfiles /P "C:\Program Files (x86)\Bloody7\Bloody7\UserLog\Mouse\TLcir_9EFF3FF4" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Bloody7 Check 2 not found
 )
 
 if exist "C:\Users\%username%\AppData\Roaming\REDRAGON\GamingMouse" (
 explorer "C:\Users\%username%\AppData\Roaming\REDRAGON\GamingMouse"
+forfiles /P "C:\Users\%username%\AppData\Roaming\REDRAGON\GamingMouse" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Redragon not found
 )
 
 if exist "C:\Users\%USERNAME%\Documents\M711 Gaming Mouse" (
 explorer "C:\Users\%USERNAME%\Documents\M711 Gaming Mouse"
+forfiles /P "C:\Users\%USERNAME%\Documents\M711 Gaming Mouse" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Redragon M711 not found
 )
 
 if exist "C:\Program Files (x86)\Xenon200\" (
 explorer "C:\Program Files (x86)\Xenon200\"
+forfiles /P "C:\Program Files (x86)\Xenon200\" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Xenon200 not found
 )
 
 if exist "C:\ProgramData\CoolerMaster\PORTAL\config\" (
 explorer "C:\ProgramData\CoolerMaster\PORTAL\config\"
+forfiles /P "C:\ProgramData\CoolerMaster\PORTAL\config\" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%CoolerMaster not found
 )
 
 if exist "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\" (
 explorer "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\"
+forfiles /P "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%SteelSeries not found
 )
 
 if exist "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Local Storage\leveldb\" (
 explorer "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Local Storage\leveldb\"
+forfiles /P "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Local Storage\leveldb\" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%SteelSeries Check 2 not found
 )
 
 if exist "C:\ProgramData\Alienware\AlienWare Command Center\fxmetadata" (
 explorer "C:\ProgramData\Alienware\AlienWare Command Center\fxmetadata"
+forfiles /P "C:\ProgramData\Alienware\AlienWare Command Center\fxmetadata" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Alienware not found
 )
 
 if exist "C:\Users\%username%\AppData\Roaming\ROCCAT\SWARM\" (
 explorer "C:\Users\%username%\AppData\Roaming\ROCCAT\SWARM\"
+forfiles /P "C:\Users\%username%\AppData\Roaming\ROCCAT\SWARM\" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Roccat not found
 )
 
 if exist "C:\Program Files\Gaming MouseV30" (
 explorer "C:\Program Files\Gaming MouseV30"
+forfiles /P "C:\Program Files\Gaming MouseV30" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%MotorSpeed not found
 )
 
 if exist "C:\Program Files (x86)\Gaming Mouse\Config" (
 explorer "C:\Program Files (x86)\Gaming Mouse\Config"
+forfiles /P "C:\Program Files (x86)\Gaming Mouse\Config" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%MarsGaming not found
 )
 
 if exist "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108" (
 explorer "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108"
+forfiles /P "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Marvo not found
 )
 
 if exist "C:\Program Files\AYAX GamingMouse" (
 explorer "C:\Program Files\AYAX GamingMouse"
+forfiles /P "C:\Program Files\AYAX GamingMouse" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Ayax not found
 )
 
 if exist "C:\Blackweb Gaming AP\config" (
 explorer "C:\Blackweb Gaming AP\config"
+forfiles /P "C:\Blackweb Gaming AP\config" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Blackweb not found
 )
 
 if exist "C:\Program Files (x86)\SPC Gear" (
 explorer "C:\Program Files (x86)\SPC Gear"
+forfiles /P "C:\Program Files (x86)\SPC Gear" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Lix not found
 )
-ping localhost -n 5 >nul
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
 goto menu
 
 :: Programas de Grabacion
