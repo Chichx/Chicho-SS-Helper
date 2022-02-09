@@ -1,7 +1,8 @@
 :: Developed by: Chicho#1337
 :: https://github.com/Chichx
 @echo off
-title SS Helper - Chicho#1337 - 2.0
+set version=2.0
+title Chicho SS Helper - %version%
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 
 :variables
@@ -26,7 +27,7 @@ set t=[40m
 :webhook
 chcp 65001 >nul
 echo.
-set /p webhook="%c%Please, paste the webhook:%u% "
+set /p webhook="%c%Paste the webhook »%u% "
 echo.
 goto loading
 
@@ -354,7 +355,7 @@ echo.
 echo.
 echo.
 echo.
-set /p pinid=Pin: 
+set /p pinid="%c%Pin »%u% " 
 
 if %pinid%==%pin% goto authenticated
 if NOT %pinid%==%pin% goto fail
@@ -473,12 +474,13 @@ echo %c%                       ╚═══════════════�
 echo %c%                             ║                %u% [%c%13%u%] Theme presets%c%               ║
 echo %c%                             ║                %u% [%c%Quit%u%] Destruct%c%                  ║
 echo %c%                             ╚══════════════════════════════════════════════════╝
+echo %u%                                                Current Version: %c%%version%
 echo %u%                                                Licensed to %c%%username%
 tasklist /fi "ImageName eq Javaw.exe" /fo csv 2>nul | find /I "Javaw" >nul
 if "%ERRORLEVEL%"=="0" echo                                                 %g%Minecraft found.%white%
 if "%ERRORLEVEL%"=="1" echo                                                 %r%Minecraft not found.%white%
 echo.
-set /p M="%c%Please, choose:%u% "
+set /p M="%c%Choose an option »%u% "
 if %M%==1 goto Macro
 if %M%==2 goto BlockedSites
 if %M%==3 goto RecordingSoftwares
