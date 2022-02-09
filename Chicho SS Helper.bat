@@ -3,12 +3,8 @@
 @echo off
 title SS Helper - Chicho#1337 - 2.0
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
-
 :: Se crea el ChichoSSHelper
 md %appdata%\ChichoSSHelper
-
-:: Webhook
-SET webhook=
 
 :variables
 set g=[92m
@@ -28,6 +24,17 @@ set y=[40;33m
 set g2=[102m
 set r2=[101m
 set t=[40m
+
+:webhook
+chcp 65001 >nul
+echo.
+set /p webhook="%c%Please, paste the webhook:%u% "
+echo.
+goto loading
+
+:: Webhook
+SET webhook=
+
 
 :loading
 chcp 65001 >nul
@@ -557,8 +564,8 @@ echo %u%[%c%HP%u%] Download Hidden Process Detector
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Please, choose:%u% "
-if %ERRORLEVEL% == 1 goto ProcessHacker2
-if %ERRORLEVEL% == 2 goto LastActivityView
+if %M%==PH2 goto ProcessHacker2
+if %M%==LAV goto LastActivityView
 if %M%==PH2 goto ProcessHacker2
 if %M%==LAV goto LastActivityView
 if %M%==WPV goto WinPrefetchView
