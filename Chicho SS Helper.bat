@@ -1,16 +1,14 @@
 :: Developed by: Chicho#1337
 :: https://github.com/Chichx
 @echo off
-title Chicho SS Helper - Chicho#1337 - 2.0
+title SS Helper - Chicho#1337 - 2.0
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
-curl -1 icanhazip.com 1> tmpwanip & cls & set /p ipv4= < tmpwanip & set /p ipv4= < tmpwanip & del /f tmpwanip
 
 :: Se crea el ChichoSSHelper
 md %appdata%\ChichoSSHelper
 
 :: Webhook
 SET webhook=
-SET auth_logs_webhook=
 
 :variables
 set g=[92m
@@ -335,7 +333,7 @@ for /F %%c in ('echo %%alfanum:~!pin_num!^,1%%') do set pin=!pin!%%c
 )
 cls
 :: Pone el pin en el webhook
-%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"content\":\":white_check_mark: **New PIN** \n\n:clock1: **Opened on**: %date% - %time% \n**PIN for %USERNAME%** \n```asciidoc\nPIN: %pin%\n\n``` \"}" %webhook%
+%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"embeds\": [{\"title\": \"New PIN.\", \"color\": 5220458, \"fields\": [{\"name\": \":key: **Pin**\", \"value\": \"__%pin%__\"}, {\"name\": \":man_pouting: **Username**\", \"value\": \"%username%\", \"inline\": true}, {\"name\": \":computer: **Computer Name** \", \"value\": \"%COMPUTERNAME% \", \"inline\": true}],\"footer\":{\"text\": \"Opened on %date% - %time%\"}}]}" %webhook%
 cls
 echo.
 echo.
@@ -374,8 +372,7 @@ echo.
 echo.
 echo.
 echo.
-%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"content\":\":white_check_mark: **Pin Successfully Used.** \n\n:detective: **Pin**: __%pin%__\n\n:clock1: **Opened on**: %date% - %time% \n:man_pouting: **Username**: %username% \n:computer: **Computer Name**: %COMPUTERNAME% \n:window: **OS**: %os% \"}" %webhook%
-%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"content\":\":white_check_mark: **Successfully authenticated.** \n\n:clock1: **Opened on**: %date% - %time% \n:detective: **Pin Used**: %pin% \n:man_pouting: **Username**: %username% \n:computer: **Computer Name**: %COMPUTERNAME% \n:window: **OS**: %os%\n:detective: **IP**: %ipv4% \"}" %auth_logs_webhook%
+%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"embeds\": [{\"title\": \":white_check_mark: Successfully used PIN.\", \"color\": 5220458, \"fields\": [{\"name\": \":key: **Pin**\", \"value\": \"**%pin%**\"}, {\"name\": \":man_pouting: **Username**\", \"value\": \"%username%\", \"inline\": true}, {\"name\": \":window: **OS** \", \"value\": \"%os% \", \"inline\": true}, {\"name\": \":computer: **Computer Name** \", \"value\": \"%COMPUTERNAME% \", \"inline\": true}],\"thumbnail\":{\"url\": \"https://i.imgur.com/8WBaKK8.png\"},\"footer\":{\"text\": \"Opened on %date% - %time%\"}}]}" %webhook%
 echo.
 timeout /t 2 >nul & cls & goto menu
 
@@ -397,7 +394,6 @@ echo.
 echo.
 echo.
 echo.
-%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Auth secure\", \"content\":\":x: **Invalid Pin** \n\n:clock1: **Opened on**: %date% - %time% \n:man_pouting: **Username**: %username% \n:computer: **Computer Name**: %COMPUTERNAME% \n:window: **OS**: %os%\n:detective: **IP**: %ipv4% \"}" %auth_logs_webhook%
 rmdir /s /q %appdata%\ChichoSSHelper
 echo.
 timeout /t 2 >nul & exit /b
@@ -1942,7 +1938,7 @@ goto menu
 :: Borrar
 
 :Destruct
-title Thanks for using Chicho SS Helper!
+title Thanks for using SS Helper!
 mode 42,5
 cls
 echo.            
