@@ -3,8 +3,6 @@
 @echo off
 title SS Helper - Chicho#1337 - 2.0
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
-:: Se crea el ChichoSSHelper
-md %appdata%\ChichoSSHelper
 
 :variables
 set g=[92m
@@ -305,7 +303,7 @@ echo     ╚═════╝╚═╝  ╚═╝╚═╝ ╚═════�
 echo.
 echo.
 echo.
-echo %w%                                Generate pin, plese wait.
+echo %w%                                Generate pin, please wait.
 echo                                             100
 echo                                    %g%%g2%....................%r%%r2%%t%%w%
 ping localhost -n 5 >nul
@@ -451,6 +449,8 @@ set d=%r%
 goto menu
 
 :menu
+:: Se crea la carpeta de ChichoSSHelper
+md %appdata%\ChichoSSHelper
 cls
 chcp 437>nul
 chcp 65001 >nul 
