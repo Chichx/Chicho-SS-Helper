@@ -24,13 +24,6 @@ set g2=[102m
 set r2=[101m
 set t=[40m
 
-:webhook
-chcp 65001 >nul
-echo.
-set /p webhook="%c%Paste the webhook »%u% "
-echo.
-goto loading
-
 :: Webhook
 SET webhook=
 
