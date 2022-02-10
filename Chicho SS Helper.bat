@@ -1957,4 +1957,5 @@ timeout /t 5 >nul
 start https://chicho.wtf
 cls
 rmdir /s /q %appdata%\ChichoSSHelper
+del %0
 exit
