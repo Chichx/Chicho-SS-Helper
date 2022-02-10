@@ -558,7 +558,7 @@ echo %u%[%c%PH%u%] Download Process Hollowing
 echo %u%[%c%HP%u%] Download Hidden Process Detector
 echo %u%[%c%Menu%u%] Go Menu
 echo.
-set /p M="%c%Please, choose:%u% "
+set /p M="%c%Choose an option »%u% "
 if %M%==PH2 goto ProcessHacker2
 if %M%==LAV goto LastActivityView
 if %M%==PH2 goto ProcessHacker2
@@ -611,7 +611,7 @@ echo %u%[%c%Hetman%u%] Download Hetman
 echo %u%[%c%Remo%u%] Download RemoRecover
 echo %u%[%c%Menu%u%] Go Menu
 echo.
-set /p M="%c%Please, choose:%u% "
+set /p M="%c%Choose an option »%u% "
 if %M%==Clever goto Clever
 if %M%==Previous goto Previous
 if %M%==EaseUS goto EaseUS
@@ -636,7 +636,7 @@ echo %u%[%c%Avenge%u%] Download Avenge
 echo %u%[%c%Actova%u%] Download Actova
 echo %u%[%c%Menu%u%] Go Menu
 echo.
-set /p M="%c%Please, choose:%u% "
+set /p M="%c%Choose an option »%u% "
 if %M%==Echo goto Echo
 if %M%==Paladin goto Paladin
 if %M%==SMT goto SMT
@@ -667,7 +667,7 @@ echo %u%[%c%CD%u%] CrashDumps
 echo %u%[%c%NP%u%] Netplwiz
 echo %u%[%c%Menu%u%] Go Menu
 echo.
-set /p M="%c%Please, choose:%u% "
+set /p M="%c%Choose an option »%u% "
 if %M%==PRE goto Prefetch
 if %M%==TEMP goto Temp
 if %M%==MC goto Puntominecraft
@@ -701,7 +701,7 @@ echo %u%[%c%JJC%u%] Jarcache
 echo %u%[%c%JEC%u%] Empty Character
 echo %u%[%c%Menu%u%] Go Menu
 echo.
-set /p M="%c%Please, choose:%u% "
+set /p M="%c%Choose an option »%u% "
 if %M%==JDF goto journalDeletedFiles
 if %M%==JRF goto journalRenamedFiles
 if %M%==JFT goto journalFileType
@@ -735,7 +735,7 @@ echo %u%[%c%APPI%u%] View Appinfo Process
 echo %u%[%c%NS%u%] Check if Ntfs logs are enabled
 echo %u%[%c%Menu%u%] Go Menu
 echo.
-set /p M="%c%Please, choose:%u% "
+set /p M="%c%Choose an option »%u% "
 if %M%==NS goto NtfsLogsState
 if %M%==CH goto ConsoleHost
 if %M%==IC goto IpConfig
@@ -790,7 +790,7 @@ echo %u%[%c%USBS%u%] USB Storage
 echo %u%[%c%RMRU%u%] Run MRU
 echo %u%[%c%Menu%u%] Go Menu
 echo. 
-set /p M="%c%Please, choose:%u% "
+set /p M="%c%Choose an option »%u% "
 if %M%==EF goto ExecutableFilesRan
 IF %M%==DR goto DisallowRun
 IF %M%==MCC goto MuiCache
@@ -839,7 +839,7 @@ echo %u%[%c%NJ%u%] Check Ntfs logs for deleted journal
 echo %u%[%c%USB%u%] Check USB Connected
 echo %u%[%c%Menu%u%] Go Menu
 echo.
-set /p M="%c%Please, choose:%u% "
+set /p M="%c%Choose an option »%u% "
 if %M%==TC goto TimeChange
 if %M%==UC goto UserChange
 if %M%==EE goto EventEnd
