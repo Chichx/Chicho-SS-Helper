@@ -1686,6 +1686,13 @@ forfiles /P "%programdata%\Razer\Synapse\Accounts" /C "cmd /c echo [@fdate] [@ft
 echo %c%Razer Synapse not found
 )
 
+if exist "C:\ProgramData\Razer\Synapse3\Log" (
+explorer "C:\ProgramData\Razer\Synapse3\Log"
+forfiles /P "C:\ProgramData\Razer\Synapse3\Log" /C "cmd /c echo [@fdate] [@ftime] @path"
+) else (
+echo %c%Razer Turbo not found
+)
+
 if exist "%localappdata%\Razer\Synapse3\Settings" (
 explorer "%localappdata%\Razer\Synapse3\Settings"
 forfiles /P "%localappdata%\Razer\Synapse3\Settings" /C "cmd /c echo [@fdate] [@ftime] @path"
@@ -1763,6 +1770,13 @@ forfiles /P "C:\ProgramData\CoolerMaster\PORTAL\config\" /C "cmd /c echo [@fdate
 echo %c%CoolerMaster not found
 )
 
+if exist "C:\Program Files (x86)\CoolerMaster\MasterPlus" (
+explorer "C:\Program Files (x86)\CoolerMaster\MasterPlus"
+forfiles /P "C:\Program Files (x86)\CoolerMaster\MasterPlus" /C "cmd /c echo [@fdate] [@ftime] @path"
+) else (
+echo %c%CoolerMaster 2 not found
+)
+
 if exist "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\" (
 explorer "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\"
 forfiles /P "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\" /C "cmd /c echo [@fdate] [@ftime] @path"
@@ -1805,6 +1819,13 @@ forfiles /P "C:\Program Files (x86)\Gaming Mouse\Config" /C "cmd /c echo [@fdate
 echo %c%MarsGaming not found
 )
 
+if exist "C:\Program Files (x86)\MARSGAMING\MMGX\modules\macro" (
+explorer "C:\Program Files (x86)\MARSGAMING\MMGX\modules\macro"
+forfiles /P "C:\Program Files (x86)\MARSGAMING\MMGX\modules\macro" /C "cmd /c echo [@fdate] [@ftime] @path"
+) else (
+echo %c%MarsGaming 2 not found
+)
+
 if exist "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108" (
 explorer "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108"
 forfiles /P "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108" /C "cmd /c echo [@fdate] [@ftime] @path"
@@ -1831,6 +1852,13 @@ explorer "C:\Program Files (x86)\SPC Gear"
 forfiles /P "C:\Program Files (x86)\SPC Gear" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
 echo %c%Lix not found
+)
+
+if exist "C:\Users\%username%\Documents\ASUS\ROG\ROG Armoury\Common\Macro" (
+explorer "C:\Users\%username%\Documents\ASUS\ROG\ROG Armoury\Common\Macro"
+forfiles /P "C:\Users\%username%\Documents\ASUS\ROG\ROG Armoury\Common\Macro" /C "cmd /c echo [@fdate] [@ftime] @path"
+) else (
+echo %c%Asus Rog not found
 )
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
