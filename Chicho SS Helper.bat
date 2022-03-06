@@ -556,6 +556,7 @@ echo %u%[%c%ADS%u%] Download Alternate Data Steam
 echo %u%[%c%JT%u%] Download JournalTrace
 echo %u%[%c%PH%u%] Download Process Hollowing
 echo %u%[%c%HP%u%] Download Hidden Process Detector
+echo %u%[%c%FELV%u%] Full Event Log View
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Choose an option »%u% "
@@ -592,6 +593,7 @@ if %M%==ADS goto AlternateDataSteam
 if %M%==JT goto JournalTrace
 if %M%==PH goto ProcessHollowing
 if %M%==HP goto ProcessHidden
+if %M%==FELV goto FullEventLogView
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -665,6 +667,7 @@ echo %u%[%c%CF%u%] Control Folders
 echo %u%[%c%FW%u%] Firewall
 echo %u%[%c%CD%u%] CrashDumps
 echo %u%[%c%NP%u%] Netplwiz
+echo %u%[%c%DM%u%] Disk Managment
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Choose an option »%u% "
@@ -682,6 +685,7 @@ if %M%==CF goto ControlFolders
 if %M%==FW goto Firewall2
 if %M%==CD goto CrashDumps
 if %M%==NP goto Netplwiz
+if %M%==DM goto DiskManagment
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -699,6 +703,7 @@ echo %u%[%c%JFS%u%] File streams
 echo %u%[%c%JFT%u%] File Type
 echo %u%[%c%JJC%u%] Jarcache
 echo %u%[%c%JEC%u%] Empty Character
+echo %u%[%c%HL%u%] Hard Link
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Choose an option »%u% "
@@ -710,6 +715,7 @@ if %M%==JER goto journalRestartProcess
 if %M%==JJC goto journalJarcache
 if %M%==JSC goto journalSecurityChanges
 if %M%==JEC goto journalEmptyCharacter
+if %M%==HL goto journalHardLink
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -726,6 +732,7 @@ echo %u%[%c%TRE%u%] Tree
 echo %u%[%c%SC%u%] Shadows Copies
 echo %u%[%c%MMA%u%] MMAgent
 echo %u%[%c%TNC%u%] Test Network Connection
+echo %u%[%c%SCM%u%] Service Control Manage
 echo %u%[%c%DPS%u%] View DPS Process
 echo %u%[%c%PCA%u%] View PcaSvc Process
 echo %u%[%c%EVL%u%] View Eventlog Process
@@ -744,6 +751,7 @@ if %M%==SC goto ShadowsCopies
 if %M%==TL goto TaskList
 if %M%==MMA goto MMAgent
 if %M%==TNC goto TestNetworkConnection
+if %M%==SCM goto ServiceControlManage
 if %M%==DPS goto QueryDPS
 if %M%==PCA goto QueryPcaSvc
 if %M%==EVL goto QueryEventlog
@@ -1061,6 +1069,12 @@ powershell (new-object System.Net.WebClient).DownloadFile('https://github.com/po
 "%appdata%\ChichoSSHelper\JournalTrace.exe"
 goto A
 
+:FullEventLogView
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://www.nirsoft.net/utils/fulleventlogview-x64.zip','%appdata%\ChichoSSHelper\fulleventlogview-x64.zip')
+"%appdata%\ChichoSSHelper\fulleventlogview-x64.zip"
+goto A
+
 :: Programas Para recuperar cosas
 
 :Clever
@@ -1241,6 +1255,13 @@ echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
 
+:DiskManagment
+cls
+start diskmgmt.msc
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
 :: USN journal
 
 :journalDeletedFiles
@@ -1291,6 +1312,12 @@ fsutil usn readjournal c: csv | findstr /i /C:"?" > %appdata%\ChichoSSHelper\Emp
 "%appdata%\ChichoSSHelper\EmptyCharacter.txt"
 goto E
 
+:journalHardLink
+cls
+fsutil usn readjournal c: csv | findstr /I /C:"0x00000020" > %appdata%\ChichoSSHelper\Hardlink.txt 
+"%appdata%\ChichoSSHelper\Hardlink.txt"
+goto E
+
 :: CMD Y Powershell
 
 :MMAgent
@@ -1310,6 +1337,13 @@ goto F
 :NtfsLogsState
 cls
 powershell "Get-WinEvent -ListLog Microsoft-Windows-Ntfs/Operational | Format-List *" | findstr IsEnabled
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto F
+
+:ServiceControlManage
+cls
+powershell "get-eventlog -source "Service Control manager" -logname System | select message, timegenerated, username | out-gridview"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto F
