@@ -796,6 +796,7 @@ echo %u%[%c%VIC%u%] VolumeInfoCache
 echo %u%[%c%HKID%u%] HKIDs (AMD ONLY)
 echo %u%[%c%USBS%u%] USB Storage
 echo %u%[%c%RMRU%u%] Run MRU
+echo %u%[%c%TRA%u%] Tracing
 echo %u%[%c%Menu%u%] Go Menu
 echo. 
 set /p M="%c%Choose an option »%u% "
@@ -828,6 +829,7 @@ if %M%==VIC goto VolumeInfoCache
 if %M%==HKID goto HKIDS
 if %M%==USBS goto USBStorage
 if %M%==USBS goto RunMRU
+if %M%==TRA goto Tracing
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -1626,6 +1628,13 @@ goto G
 :RunMRU
 cls
 reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /f
+start regedit
+echo Done
+goto G
+
+:Tracing
+cls
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit /v LastKey /t REG_SZ /d "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Tracing" /f
 start regedit
 echo Done
 goto G
