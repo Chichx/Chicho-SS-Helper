@@ -635,7 +635,7 @@ echo %u%[%c%Echo%u%] Download Echo
 echo %u%[%c%Paladin%u%] Download Paladin
 echo %u%[%c%SMT%u%] Download SMT
 echo %u%[%c%Avenge%u%] Download Avenge
-echo %u%[%c%Actova%u%] Download Actova
+echo %u%[%c%Actova%u%] Download SafeShare
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Choose an option »%u% "
@@ -643,7 +643,7 @@ if %M%==Echo goto Echo
 if %M%==Paladin goto Paladin
 if %M%==SMT goto SMT
 if %M%==Avenge goto Avenge
-if %M%==Actova goto Actova
+if %M%==Safeshare goto SafeShare
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -667,7 +667,10 @@ echo %u%[%c%CF%u%] Control Folders
 echo %u%[%c%FW%u%] Firewall
 echo %u%[%c%CD%u%] CrashDumps
 echo %u%[%c%NP%u%] Netplwiz
+echo %u%[%c%SRV%u%] Services
 echo %u%[%c%DM%u%] Disk Managment
+echo %u%[%c%DRS%u%] Drs (Nvidia)
+echo %u%[%c%RA%u%] ReportArchive
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Choose an option »%u% "
@@ -686,6 +689,9 @@ if %M%==FW goto Firewall2
 if %M%==CD goto CrashDumps
 if %M%==NP goto Netplwiz
 if %M%==DM goto DiskManagment
+if %M%==DRS goto DrsNvidia
+if %M%==RA goto ReportArchive
+if %M%==SRV goto ServicesWin
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -726,10 +732,11 @@ chcp 437>nul
 cls
 echo %c%Commands
 echo %u%[%c%TL%u%] TaskList
-echo %u%[%c%CH%u%] ConsoleHost History (Powershell Commands)
+echo %u%[%c%CH%u%] ConsoleHost History
 echo %u%[%c%IC%u%] IpConfig
 echo %u%[%c%TRE%u%] Tree
 echo %u%[%c%SC%u%] Shadows Copies
+echo %u%[%c%NS%u%] Ntfs logs
 echo %u%[%c%MMA%u%] MMAgent
 echo %u%[%c%TNC%u%] Test Network Connection
 echo %u%[%c%SCM%u%] Service Control Manage
@@ -739,7 +746,8 @@ echo %u%[%c%EVL%u%] View Eventlog Process
 echo %u%[%c%SYS%u%] View SysMain Process
 echo %u%[%c%DIA%u%] View DiagTrack Process
 echo %u%[%c%APPI%u%] View Appinfo Process
-echo %u%[%c%NS%u%] Check if Ntfs logs are enabled
+echo %u%[%c%DIRA%u%] Modification date of folders
+echo %u%[%c%GETP%u%] GetProcess
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Choose an option »%u% "
@@ -758,6 +766,9 @@ if %M%==EVL goto QueryEventlog
 if %M%==SYS goto QuerySysMain
 if %M%==DIA goto QueryDiagTrack
 if %M%==APPI goto QueryAppInfo
+if %M%==APPI goto QueryAppInfo
+if %M%==DIRA goto DIRA
+if %M%==GETP goto GetProcess
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -1145,16 +1156,16 @@ powershell (new-object System.Net.WebClient).DownloadFile('https://cdn.discordap
 "%appdata%\ChichoSSHelper\SMT.exe"
 goto C
 
-:Actova
-cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://dl.actova.ac/','%appdata%\ChichoSSHelper\Actova.exe')
-"%appdata%\ChichoSSHelper\Actova.exe"
-goto C
-
 :Avenge
 cls
 powershell (new-object System.Net.WebClient).DownloadFile('https://dl.avenge.ac/','%appdata%\ChichoSSHelper\Avenge.exe')
 "%appdata%\ChichoSSHelper\Avenge.exe"
+goto C
+
+:SafeShare
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://safeshare.solutions/SafeShareApplication.exe','%appdata%\ChichoSSHelper\SafeShareApplication.exe')
+"%appdata%\ChichoSSHelper\SafeShareApplication.exe"
 goto C
 
 :: Explorer
@@ -1208,6 +1219,13 @@ echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
 
+:ServicesWin
+cls
+start services.msc
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
 :ShellApplicationManager
 cls
 start appwiz.cpl
@@ -1222,9 +1240,16 @@ echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
 
+:ReportArchive
+cls
+explorer "C:\ProgramData\Microsoft\Windows\WER\ReportArchive"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
 :UsageLogs
 cls
-explorer "C:\Users\%username%\AppData\Local\Microsoft\CLR_v4.0\UsageLogs\"
+explorer "C:\Users\%username%\AppData\Local\Microsoft\CLR_v4.0\UsageLogs"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
@@ -1260,6 +1285,13 @@ goto D
 :DiskManagment
 cls
 start diskmgmt.msc
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto D
+
+:DrsNvidia
+cls
+explorer "C:\ProgramData\NVIDIA Corporation\Drs"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto D
@@ -1332,6 +1364,13 @@ goto F
 :TestNetworkConnection
 cls
 powershell "Test-NetConnection"
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto F
+
+:GetProcess
+cls
+powershell "Get-Process | select ProcessName, starttime"
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto F
@@ -1423,6 +1462,13 @@ goto F
 :Tree
 cls
 tree
+echo %c%Press %u%ENTER %c%to return to the menu
+pause >nul
+goto F
+
+:DIRA
+cls
+Dir /ar
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
 goto F
