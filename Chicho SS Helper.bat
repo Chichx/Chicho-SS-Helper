@@ -297,67 +297,13 @@ echo     ╚═════╝╚═╝  ╚═╝╚═╝ ╚═════�
 echo.
 echo.
 echo.
-echo %w%                                Generate pin, please wait.
+echo %w%                                  Developed by Chicho#1337 
 echo                                             100
 echo                                    %g%%g2%....................%r%%r2%%t%%w%
-ping localhost -n 5 >nul
-goto login
-
-:login
-for /f "delims=: tokens=2" %%A in ('chcp') do set "chcp=%%A">nul
-
-chcp 437>nul
-chcp 65001 >nul 
-
-set curllink=https://cdn.discordapp.com/attachments/938717195146502174/939241205970128916/curl.exe
-set curlcabundlelink=https://cdn.discordapp.com/attachments/938717195146502174/939240713504292944/curl-ca-bundle.crt
-
-setlocal ENABLEEXTENSIONS 
-setlocal ENABLEDELAYEDEXPANSION
-
-set alfanum=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
-
-set pin=
-
-if NOT exist %temp%\curl.exe echo Downloading CURL.exe, please wait... & powershell -Command "Invoke-WebRequest %curllink% -OutFile %temp%\curl.exe" >nul 
-if NOT exist %temp%\curl-ca-bundle.crt echo Downloading CURL-CA-BUNDLE.crt, please wait... & powershell -Command "Invoke-WebRequest %curlcabundlelink% -OutFile %temp%\curl-ca-bundle.crt" >nul 
-
-if NOT exist "%temp%\curl.exe" echo CURL.EXE not found. & pause >nul & exit
-if NOT exist "%temp%\curl-ca-bundle.crt" echo CURL-CA-BUNDLE.CRT not found. & pause >nul & exit
-
-:: Genera pin
-FOR /L %%b IN (0, 1, 5) DO (
-SET /A pin_num=!RANDOM! * 59 / 32768 + 1
-for /F %%c in ('echo %%alfanum:~!pin_num!^,1%%') do set pin=!pin!%%c
-)
-cls
-:: Pone el pin en el webhook
-%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"embeds\": [{\"title\": \"New PIN.\", \"color\": 5220458, \"fields\": [{\"name\": \":key: **Pin**\", \"value\": \"__%pin%__\"}, {\"name\": \":man_pouting: **Username**\", \"value\": \"%username%\", \"inline\": true}, {\"name\": \":computer: **Computer Name** \", \"value\": \"%COMPUTERNAME% \", \"inline\": true}],\"footer\":{\"text\": \"Opened on %date% - %time%\"}}]}" %webhook%
-cls
-echo.
-echo.
-echo.
-echo.
-echo       %p%███████╗███╗   ██╗████████╗███████╗██████╗     ██████╗ ██╗███╗   ██╗
-echo       ██╔════╝████╗  ██║╚══██╔══╝██╔════╝██╔══██╗    ██╔══██╗██║████╗  ██║
-echo       █████╗  ██╔██╗ ██║   ██║   █████╗  ██████╔╝    ██████╔╝██║██╔██╗ ██║%u%
-echo       ██╔══╝  ██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗    ██╔═══╝ ██║██║╚██╗██║
-echo       ███████╗██║ ╚████║   ██║   ███████╗██║  ██║    ██║     ██║██║ ╚████║
-echo       ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═══╝
-echo.
-echo.
-echo.
-echo.
-set /p pinid="%c%Pin »%u% " 
-
-if %pinid%==%pin% goto authenticated
-if NOT %pinid%==%pin% goto fail
-
-:: Authenticated 
-chcp %chcp% & set chcp=
+ping localhost -n 3 >nul
+goto authenticated
 
 :authenticated
-set alfanum= & set pin_num= & set alfanum= & chcp %chcp% & set chcp= &
 cls
 color a
 echo.
@@ -367,35 +313,12 @@ echo.
 echo %u%[%g%+%u%] %g%Successfully authenticated.
 echo.
 echo %u%Developed by: %g%Chicho#1337
+echo %u%Github: %g%https://github.com/Chichx
 echo.
 echo.
 echo.
 echo.
-%temp%\curl.exe -H "Accept: application/json" -H "Content-Type:multipart/form-data" -X POST -F "payload_json={\"username\": \"Chicho Pins\", \"embeds\": [{\"title\": \":white_check_mark: Successfully used PIN.\", \"color\": 5220458, \"fields\": [{\"name\": \":key: **Pin**\", \"value\": \"**%pin%**\"}, {\"name\": \":man_pouting: **Username**\", \"value\": \"%username%\", \"inline\": true}, {\"name\": \":window: **OS** \", \"value\": \"%os% \", \"inline\": true}, {\"name\": \":computer: **Computer Name** \", \"value\": \"%COMPUTERNAME% \", \"inline\": true}],\"thumbnail\":{\"url\": \"https://i.imgur.com/8WBaKK8.png\"},\"footer\":{\"text\": \"Opened on %date% - %time%\"}}]}" %webhook%
-echo.
-timeout /t 2 >nul & cls & goto menu
-
-:: Fail
-chcp %chcp% & set chcp=
-
-:fail
-set pinid= & set pin= & set webhook= & set alfanum= & set pin_num= & set alfanum= & chcp %chcp% & set chcp= &
-cls 
-color 0C
-echo.
-echo.
-echo.
-echo.
-echo %u%[%r%-%u%] %r%Not Authenticated...
-echo %r%Invalid PIN. Please try again.
-echo Add to Chicho#1337 to access the Chicho SS Helper
-echo.
-echo.
-echo.
-echo.
-rmdir /s /q %appdata%\ChichoSSHelper
-echo.
-timeout /t 2 >nul & exit /b
+timeout /t 5 >nul & cls & goto menu
 
 :Presets
 cls
