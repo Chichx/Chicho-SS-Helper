@@ -14,14 +14,13 @@ _Help staff on their Screenshares_
 * HWID Extractor
 * Custom Presets
 * Scanning Minecraft
-* Pin System (Generate automatic pin in discord)
 * Delete everything downloaded with Chicho SS Helper
 
 ### Gui 🌌
 
-| GUI | Manual | Automatic | Recovery | Explorer | USN | Commands | Regedit | EventViewer
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| ![gui](https://i.imgur.com/QzV2q9R.png) | ![manual](https://i.imgur.com/nDixieg.png) |  ![automatic](https://i.imgur.com/RZ2bfik.png) | ![recovery](https://i.imgur.com/DfiZ7vN.png) | ![explorer](https://i.imgur.com/23zase0.png) | ![usn](https://i.imgur.com/UwdJWEr.png) | ![commands](https://i.imgur.com/MN0yPzW.png) | ![regedit](https://i.imgur.com/aujW7xh.png) | ![eventvwr](https://i.imgur.com/kNC4d64.png) |
+| Loader | GUI | Manual | Automatic | Recovery | Explorer | USN | Commands | Regedit | EventViewer
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| ![loader](https://i.imgur.com/iD2mgrM.png) | ![gui](https://i.imgur.com/fykRU3v.png) | ![manual](https://i.imgur.com/FMvuVSt.png) |  ![automatic](https://i.imgur.com/eb6QrkE.png) | ![recovery](https://i.imgur.com/8bvbpTd.png) | ![explorer](https://i.imgur.com/LwdbriQ.png) | ![usn](https://i.imgur.com/fvcbh0c.png) | ![commands](https://i.imgur.com/EAKhgfJ.png) | ![regedit](https://i.imgur.com/myY2Mep.png) | ![eventvwr](https://i.imgur.com/jeGj6WC.png) |
 
 
 ## Notes ⚡
