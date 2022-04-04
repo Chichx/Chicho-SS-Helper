@@ -447,6 +447,7 @@ goto menu
 :: Programas Manuales
 :A
 chcp 437>nul
+chcp 65001 >nul
 cls
 echo %c%Manual Tools
 echo %u%[%c%PH2%u%] Download Process Hacker 2
@@ -524,6 +525,7 @@ goto A
 
 :B
 chcp 437>nul
+chcp 65001 >nul
 cls
 echo %c%Recovery Files Tools
 echo %u%[%c%Clever%u%] Download Clever Recover Files
@@ -552,6 +554,7 @@ goto B
 
 :C
 chcp 437>nul
+chcp 65001 >nul
 cls
 echo %c%Automatic Tools
 echo %u%[%c%Echo%u%] Download Echo
@@ -574,6 +577,7 @@ goto C
 
 :D
 chcp 437>nul
+chcp 65001 >nul
 cls
 echo %c%Explorer
 echo %u%[%c%PRE%u%] Prefetch
@@ -622,6 +626,7 @@ goto D
 
 :E
 chcp 437>nul
+chcp 65001 >nul
 cls
 echo %c%USN Journal
 echo %u%[%c%JSC%u%] Security changes
@@ -652,6 +657,7 @@ goto D
 
 :F
 chcp 437>nul
+chcp 65001 >nul
 cls
 echo %c%Commands
 echo %u%[%c%TL%u%] TaskList
@@ -699,6 +705,7 @@ goto E
 
 :G
 chcp 437>nul
+chcp 65001 >nul
 cls
 echo %c%Regedit Paths
 echo %u%[%c%EF%u%] Executable files ran
@@ -771,6 +778,7 @@ goto F
 
 :H
 chcp 437>nul
+chcp 65001 >nul
 cls
 echo %c%EventViewer Logs
 echo %u%[%c%TC%u%] Check for Time change
