@@ -1689,196 +1689,223 @@ if exist "%localappdata%\Logitech\Logitech Gaming Software" (
 explorer "%localappdata%\Logitech\Logitech Gaming Software"
 forfiles /P "%localappdata%\Logitech\Logitech Gaming Software" /C "cmd /c echo [@fdate] [@ftime] @path"
 ) else (
-echo %c%Logitech Gaming Software not found
+echo %r%Logitech Gaming Software not found%u%
 )
 
 if exist "%localappdata%\LGHUB" (
 explorer "%localappdata%\LGHUB"
-forfiles /P "%localappdata%\LGHUB" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "%localappdata%\LGHUB" /C "cmd /c echo %g%[@fdate] [@ftime] @path"
+echo %g%LGHUB found
 ) else (
-echo %c%LGHUB not found 
+echo %r%LGHUB not found%u% 
 )
 
 if exist "%programdata%\Razer\Synapse\Accounts" (
 explorer "%programdata%\Razer\Synapse\Accounts"
-forfiles /P "%programdata%\Razer\Synapse\Accounts" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "%programdata%\Razer\Synapse\Accounts" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Razer Synapse found
 ) else (
-echo %c%Razer Synapse not found
+echo %r%Razer Synapse not found%u%
 )
 
 if exist "C:\ProgramData\Razer\Synapse3\Log" (
 explorer "C:\ProgramData\Razer\Synapse3\Log"
-forfiles /P "C:\ProgramData\Razer\Synapse3\Log" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\ProgramData\Razer\Synapse3\Log" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Razer Turbo found
 ) else (
-echo %c%Razer Turbo not found
+echo %r%Razer Turbo not found
 )
 
 if exist "%localappdata%\Razer\Synapse3\Settings" (
 explorer "%localappdata%\Razer\Synapse3\Settings"
-forfiles /P "%localappdata%\Razer\Synapse3\Settings" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "%localappdata%\Razer\Synapse3\Settings" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Razer Synapse 3 found
 ) else (
-echo %c%Razer Synapse 3 not found
+echo %r%Razer Synapse 3 not found
 )
 
 if exist "%programdata%\Razer\Razer Central\Accounts" (
 explorer "%programdata%\Razer\Razer Central\Accounts"
-forfiles /P "%programdata%\Razer\Razer Central\Accounts" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "%programdata%\Razer\Razer Central\Accounts" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Razer found
 ) else (
-echo %c%Razer not found
+echo %r%Razer not found
 )
 
 if exist "%appdata%\Corsair\Cue" (
 explorer "%appdata%\Corsair\Cue"
-forfiles /P "%appdata%\Corsair\Cue" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "%appdata%\Corsair\Cue" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Corsair found
 ) else (
-echo %c%Corsair not found
+echo %r%Corsair not found
 )
 
 if exist "%localappdata%\BY-COMBO2" (
 explorer "%localappdata%\BY-COMBO2"
-forfiles /P "%localappdata%\BY-COMBO2" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "%localappdata%\BY-COMBO2" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Glorious found
 ) else (
-echo %c%Glorious not found
+echo %r%Glorious not found
 )
 
 if exist "%localappdata%\JM01" (
 explorer "%localappdata%\JM01"
-forfiles /P "%localappdata%\JM01" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "%localappdata%\JM01" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Aukey found
 ) else (
-echo %c%Aukey not found
+echo %r%Aukey not found
 )
 
 if exist "C:\Program Files (x86)\Bloody7\Bloody7\Data\Mouse" (
 explorer "C:\Program Files (x86)\Bloody7\Bloody7\Data\Mouse"
-forfiles /P "C:\Program Files (x86)\Bloody7\Bloody7\Data\Mouse" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Program Files (x86)\Bloody7\Bloody7\Data\Mouse" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Bloody7 found
 ) else (
-echo %c%Bloody7 not found
+echo %r%Bloody7 not found
 )
 
 if exist "C:\Program Files (x86)\Bloody7\Bloody7\UserLog\Mouse\TLcir_9EFF3FF4" (
 explorer "C:\Program Files (x86)\Bloody7\Bloody7\UserLog\Mouse\TLcir_9EFF3FF4"
-forfiles /P "C:\Program Files (x86)\Bloody7\Bloody7\UserLog\Mouse\TLcir_9EFF3FF4" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Program Files (x86)\Bloody7\Bloody7\UserLog\Mouse\TLcir_9EFF3FF4" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Bloody7 Check 2 found
 ) else (
-echo %c%Bloody7 Check 2 not found
+echo %r%Bloody7 Check 2 not found
 )
 
 if exist "C:\Users\%username%\AppData\Roaming\REDRAGON\GamingMouse" (
 explorer "C:\Users\%username%\AppData\Roaming\REDRAGON\GamingMouse"
-forfiles /P "C:\Users\%username%\AppData\Roaming\REDRAGON\GamingMouse" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Users\%username%\AppData\Roaming\REDRAGON\GamingMouse" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Redragon found
 ) else (
-echo %c%Redragon not found
+echo %r%Redragon not found
 )
 
 if exist "C:\Users\%USERNAME%\Documents\M711 Gaming Mouse" (
 explorer "C:\Users\%USERNAME%\Documents\M711 Gaming Mouse"
-forfiles /P "C:\Users\%USERNAME%\Documents\M711 Gaming Mouse" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Users\%USERNAME%\Documents\M711 Gaming Mouse" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Redragon M711 found
 ) else (
-echo %c%Redragon M711 not found
+echo %r%Redragon M711 not found
 )
 
 if exist "C:\Program Files (x86)\Xenon200\" (
 explorer "C:\Program Files (x86)\Xenon200\"
-forfiles /P "C:\Program Files (x86)\Xenon200\" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Program Files (x86)\Xenon200\" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Xenon200 found
 ) else (
-echo %c%Xenon200 not found
+echo %r%Xenon200 not found
 )
 
 if exist "C:\ProgramData\CoolerMaster\PORTAL\config\" (
 explorer "C:\ProgramData\CoolerMaster\PORTAL\config\"
-forfiles /P "C:\ProgramData\CoolerMaster\PORTAL\config\" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\ProgramData\CoolerMaster\PORTAL\config\" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%CoolerMaster found
 ) else (
-echo %c%CoolerMaster not found
+echo %r%CoolerMaster not found
 )
 
 if exist "C:\Program Files (x86)\CoolerMaster\MasterPlus" (
 explorer "C:\Program Files (x86)\CoolerMaster\MasterPlus"
-forfiles /P "C:\Program Files (x86)\CoolerMaster\MasterPlus" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Program Files (x86)\CoolerMaster\MasterPlus" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%CoolerMaster 2 found
 ) else (
-echo %c%CoolerMaster 2 not found
+echo %r%CoolerMaster 2 not found
 )
 
 if exist "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\" (
 explorer "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\"
-forfiles /P "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Session Storage\" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%SteelSeries found
 ) else (
-echo %c%SteelSeries not found
+echo %r%SteelSeries not found
 )
 
 if exist "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Local Storage\leveldb\" (
 explorer "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Local Storage\leveldb\"
-forfiles /P "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Local Storage\leveldb\" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Users\%username%\AppData\Roaming\steelseries-engine-3-client\Local Storage\leveldb\" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%SteelSeries Check 2 found
 ) else (
-echo %c%SteelSeries Check 2 not found
+echo %r%SteelSeries Check 2 not found
 )
 
 if exist "C:\ProgramData\Alienware\AlienWare Command Center\fxmetadata" (
 explorer "C:\ProgramData\Alienware\AlienWare Command Center\fxmetadata"
-forfiles /P "C:\ProgramData\Alienware\AlienWare Command Center\fxmetadata" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\ProgramData\Alienware\AlienWare Command Center\fxmetadata" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Alienware found
 ) else (
-echo %c%Alienware not found
+echo %r%Alienware not found
 )
 
 if exist "C:\Users\%username%\AppData\Roaming\ROCCAT\SWARM\" (
 explorer "C:\Users\%username%\AppData\Roaming\ROCCAT\SWARM\"
-forfiles /P "C:\Users\%username%\AppData\Roaming\ROCCAT\SWARM\" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Users\%username%\AppData\Roaming\ROCCAT\SWARM\" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Roccat found
 ) else (
-echo %c%Roccat not found
+echo %r%Roccat not found
 )
 
 if exist "C:\Program Files\Gaming MouseV30" (
 explorer "C:\Program Files\Gaming MouseV30"
-forfiles /P "C:\Program Files\Gaming MouseV30" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Program Files\Gaming MouseV30" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%MotorSpeed found
 ) else (
-echo %c%MotorSpeed not found
+echo %r%MotorSpeed not found
 )
 
 if exist "C:\Program Files (x86)\Gaming Mouse\Config" (
 explorer "C:\Program Files (x86)\Gaming Mouse\Config"
-forfiles /P "C:\Program Files (x86)\Gaming Mouse\Config" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Program Files (x86)\Gaming Mouse\Config" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%MarsGaming found
 ) else (
-echo %c%MarsGaming not found
+echo %r%MarsGaming not found
 )
 
 if exist "C:\Program Files (x86)\MARSGAMING\MMGX\modules\macro" (
 explorer "C:\Program Files (x86)\MARSGAMING\MMGX\modules\macro"
-forfiles /P "C:\Program Files (x86)\MARSGAMING\MMGX\modules\macro" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Program Files (x86)\MARSGAMING\MMGX\modules\macro" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%MarsGaming 2 found
 ) else (
-echo %c%MarsGaming 2 not found
+echo %r%MarsGaming 2 not found
 )
 
 if exist "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108" (
 explorer "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108"
-forfiles /P "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Users\%username%\AppData\Local\BY-8801-GM917-v108" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Marvo found
 ) else (
-echo %c%Marvo not found
+echo %r%Marvo not found
 )
 
 if exist "C:\Program Files\AYAX GamingMouse" (
 explorer "C:\Program Files\AYAX GamingMouse"
-forfiles /P "C:\Program Files\AYAX GamingMouse" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Program Files\AYAX GamingMouse" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Ayax found
 ) else (
-echo %c%Ayax not found
+echo %r%Ayax not found
 )
 
 if exist "C:\Blackweb Gaming AP\config" (
 explorer "C:\Blackweb Gaming AP\config"
-forfiles /P "C:\Blackweb Gaming AP\config" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Blackweb Gaming AP\config" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Blackweb found
 ) else (
-echo %c%Blackweb not found
+echo %r%Blackweb not found
 )
 
 if exist "C:\Program Files (x86)\SPC Gear" (
 explorer "C:\Program Files (x86)\SPC Gear"
-forfiles /P "C:\Program Files (x86)\SPC Gear" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Program Files (x86)\SPC Gear" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Lix found
 ) else (
-echo %c%Lix not found
+echo %r%Lix not found
 )
 
 if exist "C:\Users\%username%\Documents\ASUS\ROG\ROG Armoury\Common\Macro" (
 explorer "C:\Users\%username%\Documents\ASUS\ROG\ROG Armoury\Common\Macro"
-forfiles /P "C:\Users\%username%\Documents\ASUS\ROG\ROG Armoury\Common\Macro" /C "cmd /c echo [@fdate] [@ftime] @path"
+forfiles /P "C:\Users\%username%\Documents\ASUS\ROG\ROG Armoury\Common\Macro" /C "cmd /c %g%echo [@fdate] [@ftime] @path"
+echo %g%Asus Rog found
 ) else (
-echo %c%Asus Rog not found
+echo %r%Asus Rog not found
 )
 echo %c%Press %u%ENTER %c%to return to the menu
 pause >nul
