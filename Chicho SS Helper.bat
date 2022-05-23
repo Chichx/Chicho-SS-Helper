@@ -480,7 +480,15 @@ echo %u%[%c%ADS%u%] Download Alternate Data Steam
 echo %u%[%c%JT%u%] Download JournalTrace
 echo %u%[%c%PH%u%] Download Process Hollowing
 echo %u%[%c%HP%u%] Download Hidden Process Detector
-echo %u%[%c%FELV%u%] Full Event Log View
+echo %u%[%c%FELV%u%] Download Full Event Log View
+echo %u%[%c%AMP%u%] Download Amcache Parser
+echo %u%[%c%TLE%u%] Download Timeline Explorer
+echo %u%[%c%RYE%u%] Download Registry Explorer
+echo %u%[%c%PEC%u%] Download PECmd
+echo %u%[%c%EEC%u%] Download EvtxECmd
+echo %u%[%c%WTC%u%] Download WxTCmd
+echo %u%[%c%MFTE%u%] Download MFTECmd
+echo %u%[%c%DDD%u%] Download Digital Detective Decode
 echo %u%[%c%Menu%u%] Go Menu
 echo.
 set /p M="%c%Choose an option »%u% "
@@ -518,6 +526,14 @@ if %M%==JT goto JournalTrace
 if %M%==PH goto ProcessHollowing
 if %M%==HP goto ProcessHidden
 if %M%==FELV goto FullEventLogView
+if %M%==AMP goto AmcacheParser
+if %M%==TLE goto TimelineExplorer
+if %M%==RYE goto RegistryExplorer
+if %M%==PEC goto PECmd
+if %M%==EEC goto EvtxECmd
+if %M%==WTC goto WxTCmd
+if %M%==MFTE goto MFTECmd
+if %M%==DDD goto DigitalDetectiveDecode
 if %M%==Menu goto menu
 echo %c%Please enter a valid option.
 timeout /t 1 /nobreak >nul
@@ -1017,6 +1033,54 @@ goto A
 cls
 powershell (new-object System.Net.WebClient).DownloadFile('https://www.nirsoft.net/utils/fulleventlogview-x64.zip','%appdata%\ChichoSSHelper\fulleventlogview-x64.zip')
 "%appdata%\ChichoSSHelper\fulleventlogview-x64.zip"
+goto A
+
+:AmcacheParser
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/AmcacheParser.zip','%appdata%\ChichoSSHelper\AmcacheParser.zip')
+"%appdata%\ChichoSSHelper\AmcacheParser.zip"
+goto A
+
+:TimelineExplorer
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/TimelineExplorer.zip','%appdata%\ChichoSSHelper\TimelineExplorer.zip')
+"%appdata%\ChichoSSHelper\TimelineExplorer.zip"
+goto A
+
+:RegistryExplorer
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/RegistryExplorer.zip','%appdata%\ChichoSSHelper\RegistryExplorer.zip')
+"%appdata%\ChichoSSHelper\RegistryExplorer.zip"
+goto A
+
+:PECmd
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/PECmd.zip','%appdata%\ChichoSSHelper\PECmd.zip')
+"%appdata%\ChichoSSHelper\PECmd.zip"
+goto A
+
+:EvtxECmd
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/EvtxECmd.zip','%appdata%\ChichoSSHelper\EvtxECmd.zip')
+"%appdata%\ChichoSSHelper\EvtxECmd.zip"
+goto A
+
+:WxTCmd
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/WxTCmd.zip','%appdata%\ChichoSSHelper\WxTCmd.zip')
+"%appdata%\ChichoSSHelper\WxTCmd.zip"
+goto A
+
+:MFTECmd
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/MFTECmd.zip','%appdata%\ChichoSSHelper\MFTECmd.zip')
+"%appdata%\ChichoSSHelper\MFTECmd.zip"
+goto A
+
+:DigitalDetectiveDecode
+cls
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/DCode.zip','%appdata%\ChichoSSHelper\DCode.zip')
+"%appdata%\ChichoSSHelper\DCode.zip"
 goto A
 
 :: Programas Para recuperar cosas
