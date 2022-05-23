@@ -2,7 +2,7 @@
 :: https://github.com/Chichx
 @echo off
 set version=2.0
-title Chicho SS Helper - %version%
+title Chicho SS Helper - %version% - %date%
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 
 :variables
@@ -391,7 +391,7 @@ echo %c%                             ║                %u% [%c%13%u%] Theme pre
 echo %c%                             ║                %u% [%c%Quit%u%] Destruct%c%                  ║
 echo %c%                             ╚══════════════════════════════════════════════════╝
 echo %u%                                                Current Version: %c%%version%
-echo %u%                                                Licensed to %c%%username%
+echo %u%                                %u%User %c%%username% %u%- Date %c%%date% %u%- Time %c%%time% 
 tasklist /fi "ImageName eq Javaw.exe" /fo csv 2>nul | find /I "Javaw" >nul
 if "%ERRORLEVEL%"=="0" echo                                                 %g%Minecraft found.%white%
 if "%ERRORLEVEL%"=="1" echo                                                 %r%Minecraft not found.%white%
