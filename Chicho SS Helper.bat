@@ -1,4 +1,4 @@
-:: Developed by: Chicho#1337
+:: Developed by: Chicho#5493
 :: https://github.com/Chichx
 @echo off
 set version=2.0
@@ -44,7 +44,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo %w%                                             5 
 echo                                    %g%%g2%.%r%%r2%...................%t%%w%
 ping localhost -n 2 >nul
@@ -62,7 +62,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             10
 echo                                    %g%%g2%..%r%%r2%..................%t%%w%
 ping localhost -n 2 >nul
@@ -80,7 +80,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             15
 echo                                    %g%%g2%...%r%%r2%.................%t%%w%
 ping localhost -n 2 >nul
@@ -98,7 +98,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             20
 echo                                    %g%%g2%....%r%%r2%................%t%%w%
 ping localhost -n 2 >nul
@@ -116,7 +116,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             25
 echo                                    %g%%g2%.....%r%%r2%...............%t%%w%
 ping localhost -n 2 >nul
@@ -134,7 +134,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             30
 echo                                    %g%%g2%......%r%%r2%..............%t%%w%
 ping localhost -n 2 >nul
@@ -152,7 +152,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             35
 echo                                    %g%%g2%.......%r%%r2%.............%t%%w%
 ping localhost -n 2 >nul
@@ -170,7 +170,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             40
 echo                                    %g%%g2%........%r%%r2%............%t%%w%
 ping localhost -n 2 >nul
@@ -188,7 +188,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             45
 echo                                    %g%%g2%.........%r%%r2%...........%t%%w%
 ping localhost -n 2 >nul
@@ -206,7 +206,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337  
+echo %w%                                  Developed by Chicho#5493  
 echo                                             50
 echo                                    %g%%g2%..........%r%%r2%..........%t%%w%
 ping localhost -n 2 >nul
@@ -224,7 +224,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337  
+echo %w%                                  Developed by Chicho#5493  
 echo                                             75
 echo                                    %g%%g2%...............%r%%r2%.....%t%%w%
 ping localhost -n 2 >nul
@@ -242,7 +242,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             80
 echo                                    %g%%g2%................%r%%r2%....%t%%w%
 ping localhost -n 2 >nul
@@ -260,7 +260,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             85
 echo                                    %g%%g2%.................%r%%r2%...%t%%w%
 ping localhost -n 2 >nul
@@ -278,7 +278,7 @@ echo            ╚══════╝╚══════╝    ╚═╝  �
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             90
 echo                                    %g%%g2%..................%r%%r2%..%t%%w%
 ping localhost -n 2 >nul
@@ -288,16 +288,16 @@ echo.
 echo.
 echo.
 echo.
-echo %c%    ██████╗██╗  ██╗██╗ ██████╗██╗  ██╗ ██████╗  ██╗ ██╗  ██╗██████╗ ██████╗ ███████╗
-echo    ██╔════╝██║  ██║██║██╔════╝██║  ██║██╔═══██╗████████╗███║╚════██╗╚════██╗╚════██║
-echo    ██║     ███████║██║██║     ███████║██║   ██║╚██╔═██╔╝╚██║ █████╔╝ █████╔╝    ██╔╝%u%
-echo    ██║     ██╔══██║██║██║     ██╔══██║██║   ██║████████╗ ██║ ╚═══██╗ ╚═══██╗   ██╔╝ 
-echo    ╚██████╗██║  ██║██║╚██████╗██║  ██║╚██████╔╝╚██╔═██╔╝ ██║██████╔╝██████╔╝   ██║  
-echo     ╚═════╝╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═╝ ╚═╝  ╚═╝╚═════╝ ╚═════╝    ╚═╝ 
+echo        %c%    ███████╗███████╗    ██╗  ██╗███████╗██╗     ██████╗ ███████╗██████╗ 
+echo            ██╔════╝██╔════╝    ██║  ██║██╔════╝██║     ██╔══██╗██╔════╝██╔══██╗
+echo            ███████╗███████╗    ███████║█████╗  ██║     ██████╔╝█████╗  ██████╔╝%u%
+echo            ╚════██║╚════██║    ██╔══██║██╔══╝  ██║     ██╔═══╝ ██╔══╝  ██╔══██╗
+echo            ███████║███████║    ██║  ██║███████╗███████╗██║     ███████╗██║  ██║
+echo            ╚══════╝╚══════╝    ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚══════╝╚═╝  ╚═╝
 echo.
 echo.
 echo.
-echo %w%                                  Developed by Chicho#1337 
+echo %w%                                  Developed by Chicho#5493 
 echo                                             100
 echo                                    %g%%g2%....................%r%%r2%%t%%w%
 ping localhost -n 3 >nul
@@ -312,7 +312,7 @@ echo.
 echo.
 echo %u%[%g%+%u%] %g%Successfully authenticated.
 echo.
-echo %u%Developed by: %g%Chicho#1337
+echo %u%Developed by: %g%Chicho#5493
 echo %u%Github: %g%https://github.com/Chichx
 echo.
 echo.
@@ -2083,7 +2083,7 @@ title Thanks for using SS Helper!
 mode 42,5
 cls
 echo.            
-echo %u%Developed by: %c%Chicho#1337
+echo %u%Developed by: %c%Chicho#5493
 echo %u%Github: %c%https://github.com/Chichx
 timeout /t 5 >nul
 start https://chicho.wtf
