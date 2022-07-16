@@ -839,13 +839,13 @@ goto A
 
 :ProcessHollowing
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/PHDetection64.exe','%appdata%\ChichoSSHelper\PHDetection64.exe')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/PHDetection64.exe','%appdata%\ChichoSSHelper\PHDetection64.exe')
 "%appdata%\ChichoSSHelper\PHDetection64.exe"
 goto A
 
 :ProcessHollowing
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/HPDetector.exe','%appdata%\ChichoSSHelper\HPDetector.exe')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/HPDetector.exe','%appdata%\ChichoSSHelper\HPDetector.exe')
 "%appdata%\ChichoSSHelper\HPDetector.exe"
 goto A
 
@@ -953,7 +953,7 @@ goto A
 
 :HistoryViewer
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/hvsetup.exe','%appdata%\ChichoSSHelper\hvsetup.exe')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/hvsetup.exe','%appdata%\ChichoSSHelper\hvsetup.exe')
 "%appdata%\ChichoSSHelper\hvsetup.exe"
 goto A
 
@@ -1037,49 +1037,49 @@ goto A
 
 :AmcacheParser
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/AmcacheParser.zip','%appdata%\ChichoSSHelper\AmcacheParser.zip')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/AmcacheParser.zip','%appdata%\ChichoSSHelper\AmcacheParser.zip')
 "%appdata%\ChichoSSHelper\AmcacheParser.zip"
 goto A
 
 :TimelineExplorer
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/TimelineExplorer.zip','%appdata%\ChichoSSHelper\TimelineExplorer.zip')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/TimelineExplorer.zip','%appdata%\ChichoSSHelper\TimelineExplorer.zip')
 "%appdata%\ChichoSSHelper\TimelineExplorer.zip"
 goto A
 
 :RegistryExplorer
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/RegistryExplorer.zip','%appdata%\ChichoSSHelper\RegistryExplorer.zip')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/RegistryExplorer.zip','%appdata%\ChichoSSHelper\RegistryExplorer.zip')
 "%appdata%\ChichoSSHelper\RegistryExplorer.zip"
 goto A
 
 :PECmd
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/PECmd.zip','%appdata%\ChichoSSHelper\PECmd.zip')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/PECmd.zip','%appdata%\ChichoSSHelper\PECmd.zip')
 "%appdata%\ChichoSSHelper\PECmd.zip"
 goto A
 
 :EvtxECmd
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/EvtxECmd.zip','%appdata%\ChichoSSHelper\EvtxECmd.zip')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/EvtxECmd.zip','%appdata%\ChichoSSHelper\EvtxECmd.zip')
 "%appdata%\ChichoSSHelper\EvtxECmd.zip"
 goto A
 
 :WxTCmd
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/WxTCmd.zip','%appdata%\ChichoSSHelper\WxTCmd.zip')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/WxTCmd.zip','%appdata%\ChichoSSHelper\WxTCmd.zip')
 "%appdata%\ChichoSSHelper\WxTCmd.zip"
 goto A
 
 :MFTECmd
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/MFTECmd.zip','%appdata%\ChichoSSHelper\MFTECmd.zip')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/MFTECmd.zip','%appdata%\ChichoSSHelper\MFTECmd.zip')
 "%appdata%\ChichoSSHelper\MFTECmd.zip"
 goto A
 
 :DigitalDetectiveDecode
 cls
-powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.wtf/downloads/DCode.zip','%appdata%\ChichoSSHelper\DCode.zip')
+powershell (new-object System.Net.WebClient).DownloadFile('https://chicho.lol/downloads/DCode.zip','%appdata%\ChichoSSHelper\DCode.zip')
 "%appdata%\ChichoSSHelper\DCode.zip"
 goto A
 
@@ -2086,7 +2086,7 @@ echo.
 echo %u%Developed by: %c%Chicho#5493
 echo %u%Github: %c%https://github.com/Chichx
 timeout /t 5 >nul
-start https://chicho.wtf
+start https://chicho.lol
 cls
 rmdir /s /q %appdata%\ChichoSSHelper
 del %0
